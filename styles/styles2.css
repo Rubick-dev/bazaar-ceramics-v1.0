@@ -1,0 +1,174 @@
+ /* ### Entire Page Formatting and Layout ### */
+  body { 
+  font-family:Arial, Helvetica, sans-serif;
+  background: rgb(255, 255, 255);
+  font-size: 1em;
+}
+
+html,
+body,
+.imageContent {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  width: 50%;
+  height: auto;
+  margin: 0 auto;
+}
+
+
+/* ### Page Heading Formatting ### */
+.pageHeading {
+  background: #02C8A7;
+  min-width: 500px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+h1 { text-align: center;
+  margin-top: 20px;
+  padding: 20px;
+  font-size: 20px;
+  margin-bottom: 0;
+}
+
+
+/* ### Table formatting for Members Order Page ### */
+div .imageContent {
+  background: white;
+  margin: 0 auto;
+  min-width: 500px;
+  max-width: 500px;
+}
+
+#imageSlices {
+  border-collapse: collapse;
+  border-spacing: 0px;
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  font-size: 0px;
+}
+
+td img { 
+  width: 100%;
+  height: 30%;
+  margin: 0px;
+  border-width: 0px;
+  border: 0px;
+  padding: 0px;
+}
+
+
+/* ## Form Content Formatting ### */
+
+h3 {
+  color: rgb(194, 62, 62);
+  text-align: center;
+}
+
+.wrapper {
+  list-style-type: none;
+  padding: 0;
+  border-radius: 3px;
+}
+.form-row {
+  display: flex;
+  justify-content: flex-end;
+  padding: .5em;
+}
+
+.form-row > label {
+  padding: .5em 1em .5em 0;
+  flex: 1;
+}
+
+.form-row > input {
+  flex: 2;
+}
+
+.form-row > input,
+.form-row > button {
+  padding: .5em;
+}
+
+.form-row > button {
+ border: 0;
+}
+
+.formContent {
+  background: #7CDBD5;
+  min-width: 500px;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1px;
+}
+
+.formDetailsContent {
+  margin: 10px;
+}
+
+.buttonDiv {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  text-align: justify;
+  line-height: 0;
+  padding: 10px 0;
+}
+
+.buttonDiv button {
+  margin: 10px 15px;
+}
+
+.buttonDiv:after {
+  content: '';
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  line-height: 1.5;
+}
+
+.butn {
+  width: 25%;
+  height: 35px;
+}
+
+#clrButn {
+  background-color: rgb(228, 211, 59);
+}
+
+#calcTotal {
+  background-color: rgb(60, 63, 196);
+}
+
+#submitButton {
+  background-color: rgb(66, 224, 74);
+}
+
+
+/* ### Footer Formating ### */
+.footer {
+  background: #d8d107;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  min-width: 500px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+#footer {
+  font-size: .7em;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 10%;
+  display: inline;  
+}
+
+#closePage {
+  background-color: rgb(206, 56, 36);
+}

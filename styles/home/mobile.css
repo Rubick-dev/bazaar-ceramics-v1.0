@@ -1,0 +1,306 @@
+@media screen and (max-width: 500px) and (min-width: 50px) {
+  
+  :root {
+    /* --pastelGrey: #5F6366; */
+    --pastelGrey: #262626;
+    --pastelDarkBlue: #4D6D9A;
+    --pastelBluey: #86B3D1;
+    --pastelLightBlue: #99cED3;
+    --pastelPink: #EdB58F;
+  }
+
+  Body {
+    font-size: 10px;
+  }
+
+
+  /* ### Nav Menu ### */
+  .titleW {
+    position: absolute;
+    padding-top: 55px;
+    padding-left: 10px;
+    font-size: 1em;
+    color: white;
+  }
+
+  #logo {
+    padding: 0 10px;
+    float: left;
+    font-size: 20px;
+    line-height: 60px;
+  }
+
+  #logoImage {
+    border: 2px solid transparent;
+    margin-top: 20px;
+    border-radius: 10%;
+  }
+
+  #logoImage:hover {
+    transition: ease-in-out 250ms;
+    border: 2px solid var(--pastelPink);
+  }
+
+  .current,
+  #current {
+    border: 3px solid var(--pastelPink);
+  }
+
+  nav a {
+    padding-left: 5px;
+    font-size: 10px;
+    line-height: 30px;
+  }
+
+  #navbar {
+    margin: 0;
+    width: 100%;
+    border-bottom: 2px solid var(--pastelDarkBlue);
+  }
+
+  nav ul {
+    float: none;
+  }
+
+  .toggle+a,
+  .menu {
+    display: none;
+  }
+
+  .toggle {
+    display: block;
+    background-color: var(--pastelDarkBlue);
+    color: var(--pastelLightBlue);
+    font-size: 10px;
+    line-height: 30px; 
+    text-decoration: none;
+    border: none;
+    padding-left: 5px;
+
+  }
+
+  #main-toggle {
+    margin-top: 35px;
+    background-color: var(--pastelDarkBlue);
+  }
+
+  .toggle:hover {
+    background-color: var(--pastelGrey);
+  }
+
+  [id^=drop]:checked+ul {
+    display: block;
+  }
+
+  nav ul li {
+    displaY: block;
+    width: 100%;
+  }
+
+  nav ul ul .toggle,
+  nav ul ul a {
+    padding: 0 40px;
+  }
+
+  nav ul li ul li .toggle,
+  nav ul ul a {
+    background-color: var(--pastelDarkBlue)
+  }
+
+  nav ul ul {
+    float: none;
+    position: static;
+    color: var(--pastelLightBlue);
+  }
+
+  nav ul ul li:hover>ul,
+  nav ul li:hover>ul {
+    display: none;
+  }
+
+  nav ul ul li {
+    display: block;
+    width: 100%;
+  }
+
+
+  /* ### Mobile Page Layout ###    */
+  .grid {
+    height: 100%;
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(9, auto);
+    justify-items: center;
+    align-items: center;
+    grid-template-areas:
+      "a a a a a a"
+      "f f f f f f"
+      "c c c c c c"
+      "b b b b b b"
+      "e e e e e e"
+      "d d d d d d"
+      "g g g g g g"
+      ". h h h h ."
+      ". . i i . .";
+  }
+
+  .mainPicture {
+    grid-area: a;
+  }
+  
+  .mainPicture img {
+    width: 300px;
+    height: auto;
+    margin-top: 25px;
+  }
+
+  .contentBottomText {
+    grid-area: f;
+    line-height: 1.5em;
+    margin: 0 10%;
+  }
+
+  .topPic {
+    grid-area: c;
+    margin-top: 40px;
+  }
+  
+  .topPicText {
+    grid-area: b;
+  }
+  
+  .bottomPic {
+    grid-area: e;
+    margin-top: 40px;
+  }
+  
+  .bottomPicText {
+    grid-area: d;
+  }
+
+  .contentBottomEmailInstruct {
+    grid-area: g;
+    margin-top: 50px;
+    line-height: 1.3em;;
+  }
+  
+  .inputBox {
+    grid-area: h;
+    width: 100%;
+  }
+  
+  .buttonDiv {
+    grid-area: i;
+  }
+
+  /* Form Styling */
+  .input-group,
+  .inputBox,
+  .form-control {
+    justify-self: center;
+  }
+
+  .form-control {
+    width: 100%;
+    align-content: center;
+  }
+
+
+  /* Button Styling */
+  .buttonDiv{
+    margin-right: 0;
+  }
+
+  /* Footer Styling */
+
+.footerDiv P {
+  font-size: .5em;
+}
+
+
+  /* ##### Flexbox used to layout Company Background page #### */
+  
+  .container2 {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .cpHeading h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--pastelPink);
+  }
+  
+  .cpText1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .cpTextp1,
+  .cpTextp2,
+  .cpTextp3,
+  .cpTextp4 {
+    line-height: 1.3em;
+    margin-bottom: 20px;
+    padding: 5%;
+    padding-top: 0;
+  }
+
+  .cpImage1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .cpImageGroup2,
+  .cpImageGroup2A,
+  .cpImageGroup2B,
+  .cpImageGroup2C,
+  .cpImageGroup2D {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 60%;
+  }
+
+  #designImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    height: auto;
+  }
+
+  .picture3 {
+    width: 100%;
+    height: auto;
+    margin: 10px;
+  }
+}
+
+/* ### Added a very small sizing adjustment to keep the page readable #### */
+
+@media screen and (max-width: 275px) {
+
+  .titleW {
+    display: none;
+  }
+
+  .mainPicture img {
+    width: 200px;
+  }
+
+  .footerDiv P {
+    font-size: .3em;
+  }
+
+}

@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+:root {
+  /* --pastelGrey: #5F6366; */
+  --pastelGrey: #262626;
+  --pastelDarkBlue: #4D6D9A;
+  --pastelBluey: #86B3D1;
+  --pastelLightBlue: #99cED3;
+  --pastelPink: #EdB58F;
+}
+
+Body{
+  background: var(--pastelGrey);
+  font-size: 22px;
+  line-height: 32px;
+  width: 100%;
+  color: white;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  word-wrap: break-word !important;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+
+/* ### Navigation Menu Styling ### */
+#navbar {
+  margin: 0;
+  padding: 0;
+  background-color: var(--pastelDarkBlue);
+}
+
+#logoA:hover {
+  background-color: var(--pastelDarkBlue);
+}
+
+a {
+  color:var(--pastelBluey);
+}
+
+.tier2 {
+  line-height: 1.5;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+p {
+  text-align: center;
+}
+
+.toggle,
+[id^=drop] {
+  display: none;
+}
+
+#logo {
+  display: block;
+  padding: 0 30px;
+  float: left;
+  font-size: 20px;
+  line-height: 60px;
+}
+
+#main-toggle {
+  cursor: pointer;
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+}
+
+.nav-icon {
+  background: var(--pastelPink);
+  display: block;
+  height: 2px;
+  position: relative;
+  width: 18px;
+}
+
+.nav-icon::before,
+.nav-icon::after {
+  background: var(--pastelPink);
+  content: " ";
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.nav-icon::before {
+  top: 5px;
+}
+
+.nav-icon::after {
+  top: -5px;
+}
+
+nav::after {
+  content: "";
+  display:table;
+  clear:both;
+}
+
+Nav ul {
+  float: right;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: relative;
+}
+
+nav ul li {
+  margin: 0;
+  float: left;
+  background-color: var(--pastelDarkBlue);
+}
+
+nav a {
+  display: block;
+  padding: 0;
+  color: var(--pastelLightBlue);
+  font-size: 20px;
+  line-height: 60px;
+  text-decoration: none;
+}
+
+nav ul li ul li:hover {
+  background-color:var(--pastelGrey);
+}
+
+nav a:hover {
+  background-color: var(--pastelGrey);
+}
+
+nav ul ul {
+  display: none;
+  position: absolute;
+  top: 60px;
+}
+
+nav ul ul li {
+  width: 190px;
+  float: none;
+  display: list-item;
+  position: relative;
+}
+
+nav ul li:hover>ul {
+  display: inherit;
+}
+
+li>a:after {
+  content: ' +';
+}
+
+li>a:only-child:after {
+  content: '';
+}
+
+
+ /* ##### Form Styling ##### */
+.input-group,
+.inputBox,
+.form-control {
+  justify-self: center;
+}
+
+.form-control {
+  width: 300px;
+  align-content: center;
+}
+
+
+/* Button Styling */
+.buttonDiv{
+  display: block;
+  text-align: center;
+  margin-right: 20px;
+}
+
+.btnPrimary {
+  border: 3px solid var(--pastelLightBlue);
+  background: none;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif; 
+  cursor: pointer;
+  margin: 5px;
+  transition: 0.8s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btnPrimary:hover {
+  color: #fff;
+}
+
+.btnPrimary::before {
+  content:'';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--pastelDarkBlue);
+  z-index: -1;
+  transition: 0.8s;
+}
+
+.btnPrimary::before {
+  top: 0;
+  border-radius: 0 0 50% 50%;
+}
+
+.btnPrimar:hover::before {
+  height: 180%;
+}
+
+/* Footer Styling */
+.footerDiv {
+  height: 30px;
+  background: var(--pastelPink);
+  position: relative;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  border-radius: 6px;
+}
+
+.footerDiv P {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  right: 40%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  color: var(--pastelDarkBlue);
+  font-size: .8em;
+}
+
+/* Company Mission specific styling*/
+.companyMissionInfoContainer {
+  margin: 0 10% 10% 10%;
+  justify-content: left;
+}

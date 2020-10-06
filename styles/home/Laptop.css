@@ -1,0 +1,250 @@
+@media (min-width: 801px) {
+  
+  :root {
+    /* --pastelGrey: #5F6366; */
+    --pastelGrey: #262626;
+    --pastelDarkBlue: #4D6D9A;
+    --pastelBluey: #86B3D1;
+    --pastelLightBlue: #99cED3;
+    --pastelPink: #EdB58F;
+  }
+
+  Body {
+    font-size: 20px;    background: var(--pastelGrey);
+
+  }
+  
+  /* ### Nav Menu ### */
+    .titleW {
+    position: absolute;
+    padding-top: 55px;
+    padding-left: 20px;
+    font-size: 1.2em;
+    color: white;
+    max-width: 100px;
+    line-height: 1.2em;;
+  }
+  
+  #logo {
+    padding: 0;
+    padding-left: 5px;
+    float: left;
+    font-size: 20px;
+    line-height: 60px;
+  }
+
+  #logoA {
+    padding: 0;
+  }
+
+  #logoImage {
+    border: 2px solid transparent;
+    margin-top: 5px;
+    width: 130px;
+    height: auto;
+  }
+
+  #logoImage:hover {
+    transition: ease-in-out 250ms;
+    border: 2px solid var(--pastelPink);
+  }
+
+  .current {
+    border: 3px solid var(--pastelPink);
+  }
+
+  nav a {
+    padding: 10px;
+    font-size: 15px;
+    }
+
+  #navbar {
+    margin: 0;
+    width: 100%;
+    border-bottom: 2px solid var(--pastelDarkBlue);
+  }
+
+  nav ul {
+    float: right;
+  }
+
+  .menu {
+    margin-top: 37px;
+    margin-right: 10px;
+  }
+  
+
+  /* ### Tablet Layout CSS ### */
+  .grid {
+    height: 100%;
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(7, auto);
+    justify-items: center;
+    align-items: center;
+    grid-template-areas:
+      "a a a a a a a"
+      "f f f f f f f"
+      "c c c . e e e"
+      "c c c . e e e"
+      "b b b . d d d"
+      "g g g g g g g"
+      ". h h h i i ."
+    }
+
+  .mainPicture {
+    grid-area: a;
+  }
+  
+  .mainPicture img {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+  }
+
+  .contentBottomText {
+    grid-area: f;
+    line-height: 1.5em;
+    margin: 0 6%;
+  }
+
+  .topPic {
+    grid-area: c;
+    margin-top: 40px;
+    width: 200px;
+    height: auto;
+    justify-content: right;
+  }
+  
+  .topPicText {
+    grid-area: b;
+  }
+  
+  .bottomPic {
+    grid-area: e;
+    margin-top: 40px;
+  }
+  
+  .bottomPicText {
+    grid-area: d;
+  }
+
+  .contentBottomEmailInstruct {
+    grid-area: g;
+    margin-top: 50px;
+    line-height: 1.3em;;
+  }
+  
+  .inputBox {
+    grid-area: h;
+    width: 100%;
+  }
+  
+  .buttonDiv {
+    grid-area: i;
+  }
+  
+  .buttonDiv{
+    margin-right: 0;
+  }
+
+  /* ### Flexbox used to layout Company Background page for Laptop size ### */
+  .container2 {
+    font-size: 20px;
+  }
+
+  .cpHeading h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--pastelPink);
+    flex-basis: 100%;
+    margin: 50px 0;
+  }
+
+  .cpHeading {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .cpText1 {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    width: 48%;
+    align-self: center;
+    padding: 1%;
+    font-size: 15px;
+    line-height: 1.2em;
+   }
+  
+  .cpImage1 {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    width: 48%;
+    align-self: center;
+    padding: 1%;
+  }
+
+  .cpTextp2 {
+    padding: 5%;
+    background-color: var(--pastelLightBlue);
+    color: var(--pastelDarkBlue);
+  }
+
+  .cpTextp3 {
+    padding: 5%;
+    background-color: var(--pastelGrey);
+  }
+
+  .cpImageGroup2A,
+  .cpImageGroup2B,
+  .cpImageGroup2C,
+  .cpImageGroup2D, 
+  .cpImageGroup2 { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 60%;
+  }
+
+  .picture3 {
+    display: flex;
+    width: 100%;
+    height: auto;
+    margin: 10px;
+  }
+
+  .cpText4 {
+    padding: 5%;
+    background-color: var(--pastelLightBlue);
+    color: var(--pastelDarkBlue);
+  }
+
+}
+
+@media (min-width: 1101px) {
+
+  .titleW {
+    max-width: 150px;
+  }
+
+  nav a {
+    padding: 18px;
+    font-size: 21px;
+  }
+
+
+  .cpText1 {
+    font-size: 20px;
+    line-height: 1.3em;
+   }
+
+
+}
+  

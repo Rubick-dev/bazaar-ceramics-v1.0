@@ -1,0 +1,36 @@
+
+/* Flexbox used to layout Company Background page */
+.container2 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.break {
+  flex-basis: 100%;
+  height: 0;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.cpHeading {
+  display: block;
+  width: 100%;
+}
+
+.cpImageGroup2 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.cpImageGroup2A,
+.cpImageGroup2B,
+.cpImageGroup2C,
+.cpImageGroup2D {
+  width:23%;
+}
+
+
