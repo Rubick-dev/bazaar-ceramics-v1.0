@@ -1,17 +1,23 @@
-﻿<!DOCTYPE html>
+﻿<?php require_once('../private/initialise.php'); ?>
+<?php $page_title = 'Bazaar Ceramics - Members'; ?>
+<?php include(SHARED_PATH . '\header.php'); ?>
+<?php include('../private/shared/navmenu.php'); ?>
+
+<!-- <!DOCTYPE html>
 <html lang="en"> 
+
 
 <head>
 	<meta charset="utf-8">
-	<!-- <meta http-equiv="refresh" content="5"> -->
+	<meta http-equiv="refresh" content="5">
 	<meta name="description" content="Bazaar ceramics is a major ceramics producer and seller offering unique and local products">
 	<meta name="keywords" content="ceramics,pottery,clay,bazaar ceramics,gallery">
 	<meta name="author" content="Heath Burton">
-	<title>Bazaar Ceramics – Members</title>
+	<title>Bazaar Ceramics - Members</title>
 	<link rel="stylesheet" type="text/css" href="../../styles/styles.css">
 	<script type="text/javascript" src="../../scripts/formScripts.js"></script>
 
-</head>
+</head> -->
 
 <body>
 

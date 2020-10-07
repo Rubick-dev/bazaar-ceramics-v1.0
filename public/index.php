@@ -1,8 +1,7 @@
 <?php require_once('../private/initialise.php'); ?>
 <?php $page_title = 'Bazaar Ceramics'; ?>
-<?php echo SHARED_PATH; ?>
-<?php include(SHARED_PATH . 'header.php'); ?>
-<?php include('../private/shared/navmenu.php'); ?>
+<?php include(SHARED_PATH . '\header.php'); ?>
+<?php include(SHARED_PATH . '\navmenu.php'); ?>
 
 <!-- ### Home Page Content Area ### -->
   <div class="container">
@@ -56,4 +55,4 @@
   </div> <!-- End of Content Container -->
     
   <!-- ## Start of Footer Content ### -->
-  <?php include(SHARED_PATH . "footer.php"); ?>
+  <?php include(SHARED_PATH . '\footer.php'); ?>

@@ -14,7 +14,7 @@
       
     <ul class="menu"> <!-- Start of Menu structure -->
       <li><a class="current" href="index.php">Home</a></li>
-      <li><a class="" href="html/members/members.html">Members</a></li>
+      <li><a class="" href="html/members/members.php">Members</a></li>
       
                 
       <li>
