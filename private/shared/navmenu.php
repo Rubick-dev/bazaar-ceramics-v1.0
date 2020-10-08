@@ -38,7 +38,7 @@
         <input type="checkbox" id="drop-2">
         <ul>
           <li><a class="tier2 policiesPrivacyMenu" href="<?php echo url_for('html/policies/privacy.php'); ?>">Privacy</a></li>
-          <li><a class="tier2 policiesReturnsMenu" href="<?php echo url_for('html/policies/returns.php'); ?>'">Returns</a></li>
+          <li><a class="tier2 policiesReturnsMenu" href="<?php echo url_for('html/policies/returns.php'); ?>">Returns</a></li>
           <li><a class="tier2 policiesDeliveriesMenu" href="<?php echo url_for('html/policies/delivery.php'); ?>">Delivery</a></li>
           <li><a class="tier2 policiesPostSalesMenu" href="<?php echo url_for('html/policies/postsales.php'); ?>">Post Sales</a></li>
         </ul>
