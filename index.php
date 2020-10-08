@@ -1,3 +1,7 @@
+<!-- THIS FILE/PAGE HAS BEEN ADDED ONLY FOR THE PURPOSES OF HOSTING ON HEROKU -->
+<!-- LIVE SITE still under build.  -->
+<!-- PRac B home site first directory is public/index.html -->
+
 <?php require_once('private/initialise.php'); ?>
 
 <!DOCTYPE html>
@@ -35,5 +39,3 @@
 
 
 
-<!-- THIS FILE/PAGE HAS BEEN ADDED ONLY FOR THE PURPOSES OF HOSTING ON HEROKU -->
-<!-- LIVE SITE @  -->
