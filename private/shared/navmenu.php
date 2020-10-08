@@ -1,3 +1,4 @@
+</head>
 <body> <!-- Beginning of Entire Page content -->
  
   <header> <!-- ### Header area containing the Logo and Navbar ### -->

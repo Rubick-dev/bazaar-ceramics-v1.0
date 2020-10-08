@@ -1,6 +1,7 @@
 /* This function stores the values of price and quantity into a variable, then runs
 a check to see if the numbers are valid. Upon valid numbers being identified it 
 then runs a calculations and inserts the result in the total price column */ 
+
 function sum(){
   // Storing variables
   let val1 = document.getElementById('quantity').value;

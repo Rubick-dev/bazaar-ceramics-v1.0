@@ -8,17 +8,18 @@
   --pastelPink: #EdB58F;
 }
 
-Body{
-  background: var(--pastelGrey);
+body {
+  background: var(--pastelGrey); 
   font-size: 22px;
   line-height: 32px;
   width: 100%;
   color: white;
-  margin: 0;
+  margin: auto;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   word-wrap: break-word !important;
+  max-width: 1200px;
 }
 
 .container {
@@ -26,6 +27,9 @@ Body{
   margin: 0 auto;
 }
 
+a {
+  cursor: pointer;
+}
 
 /* ### Navigation Menu Styling ### */
 #navbar {
@@ -175,7 +179,7 @@ li>a:only-child:after {
 }
 
 
-/* Button Styling */
+/* ### Button Styling ### */
 .buttonDiv{
   display: block;
   text-align: center;
@@ -219,7 +223,7 @@ li>a:only-child:after {
   height: 180%;
 }
 
-/* Footer Styling */
+/* ### Footer Styling ### */
 .footerDiv {
   height: 30px;
   background: var(--pastelPink);
@@ -241,20 +245,217 @@ li>a:only-child:after {
 }
 
 
-/* Company Mission specific styling*/
+/* ### Company Mission specific styling ### */
 .companyMissionInfoContainer {
   margin: 0 10% 10% 10%;
   justify-content: left;
 }
 
 
-/* Mobile size screen styling css */
-@media screen and (max-width: 500px) and (min-width: 50px) {
+/* ### Members Page Specific styling ### */
+
+.body3 { 
+  font-family:Arial, Helvetica, sans-serif;
+  background: rgb(255, 255, 255);
+  margin: auto;
+  max-width: 1200px;
+}
+
+.container3 > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+}
+
+.pageHeading {
+  background: #02C8A7;
+  grid-column: 2 / -1;
+}
+
+.subHeading {
+  background: #cac51f;
+  grid-column: 2 / -1;
+}
+
+figcaption {
+  text-align: center;
+  color: black; 
+}
+
+.imageMembersPage {
+  max-width: 50%;
+  height: auto;
+  width: auto\9; /* ie8 */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.discItemsHead {
+  color: black;
+  text-align: center;
+}
+
+.contentArea {
+  background: #7CDBD5;
+  grid-column: 2 / -1;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+} 
+
+.banner {
+  width: 100%;
+  height: auto;
+  padding: 5px;
+}
+
+
+/* ### Productions Page Specific ### */
+.container4 {
+  margin: 0 5% 5% 5%;
+}
+
+.prodH1 {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.prodRow {
+  display: flex;
+}
+
+.prodCol {
+  flex: 20%;
+  padding: 5px;
+}
+
+.tnImage {
+  width: 80%;
+  height: auto;
+  border: 1px solid white;
+  display: block;
+  margin-left: 25px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.tnImage:hover {
+  opacity: 90%;
+}
+
+.prodImgDesc {
+  width: 80%;
+  display: block;
+  font-size: .7em;
+  text-align: center;
+  margin: auto;
+  padding: 10px;
+}
+
+.displayImage img{
+  width: 100%;
+  height: auto;
+  border: 1px solid white;
+  margin-top: 40px;
+  background-size: cover;
+}
+
+.prodTextInfo {
+  width: 90%;
+  margin: auto;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.prodTopText {
+  margin-bottom: 20px;
+  font-size: 1em;
+}
+
+.seperator {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+
+/* Animation code for fade-in */
+.fade-in {
+  animation: fadeIn ease 4000ms;
+  -webkit-animation: fadeIn ease 4000ms;
+  -moz-animation: fadeIn ease 4000ms;
+  -o-animation: fadeIn ease 4000ms;
+  -ms-animation: fadeIn ease 4000ms;
+}
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+
+
+/* ### Flexbox used to layout Company Background page ### */
+.container2 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.break {
+  flex-basis: 100%;
+  height: 0;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.cpHeading {
+  display: block;
+  width: 100%;
+}
+
+.cpImageGroup2 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.cpImageGroup2A,
+.cpImageGroup2B,
+.cpImageGroup2C,
+.cpImageGroup2D {
+  width:23%;
+}
+
+
+/* ### Mobile Device Media Query ### */
+@media (min-width: 10px) and (max-width: 500px) {
   
-  Body {
+  body {
     font-size: 10px;
   }
-
 
   /* ### Nav Menu ### */
   .titleW {
@@ -263,6 +464,7 @@ li>a:only-child:after {
     padding-left: 10px;
     font-size: 1em;
     color: white;
+    display: none;
   }
 
   #logo {
@@ -274,8 +476,9 @@ li>a:only-child:after {
 
   #logoImage {
     border: 2px solid transparent;
-    margin-top: 20px;
+    margin-top: 12px;
     border-radius: 10%;
+    width: 100px;
   }
 
   #logoImage:hover {
@@ -318,7 +521,6 @@ li>a:only-child:after {
     text-decoration: none;
     border: none;
     padding-left: 5px;
-
   }
 
   #main-toggle {
@@ -392,7 +594,7 @@ li>a:only-child:after {
   }
   
   .mainPicture img {
-    width: 300px;
+    width: 200px;
     height: auto;
     margin-top: 25px;
   }
@@ -436,6 +638,7 @@ li>a:only-child:after {
     grid-area: i;
   }
 
+
   /* Form Styling */
   .input-group,
   .inputBox,
@@ -461,8 +664,7 @@ li>a:only-child:after {
 }
 
 
-  /* ##### Flexbox used to layout Company Background page #### */
-  
+  /* ##### Flexbox used to layout Company Background page #### */  
   .container2 {
     display: flex;
     flex-wrap: wrap;
@@ -527,31 +729,49 @@ li>a:only-child:after {
     height: auto;
     margin: 10px;
   }
-}
 
-/* ### Added a very small sizing adjustment to keep the page readable #### */
 
-@media screen and (max-width: 275px) {
-
-  .titleW {
-    display: none;
+  /* Production page specific styling */
+  .prodImgDesc {
+    font-size: .6em;
+    margin-left: 10px;
   }
 
-  .mainPicture img {
-    width: 200px;
+  .prodTopText {
+    font-size: 1.3em;
+    line-height: 24px;
+    text-align: center;
   }
 
-  .footerDiv P {
-    font-size: .3em;
+  .imgandtext{
+    display: block;
+    /* width: 90%;  */
   }
-
-}
-
-
-/* Tablet size screen styling */
-@media (max-width: 800px) and (min-width: 501px) {
   
-  Body {
+  .prodResultImg {
+   width: auto;
+   margin: 0 auto;
+   padding: 0;
+  }
+  
+  .prodBottomTextDiv {
+    margin: 0 auto;
+    padding: 0;
+  }
+  
+  .prodBottomText {
+   margin-top: 20px;
+    font-size: 1.2em;
+    line-height: 24px;
+    text-align: center;
+  }
+}
+
+
+/* ### TABLET MEDIA QUERY ### */
+@media (min-width: 501px) and (max-width: 800px) {
+  
+  body {
     font-size: 15px;
     background:var(--pastelGrey);
   }
@@ -562,10 +782,10 @@ li>a:only-child:after {
     position: absolute;
     padding-top: 55px;
     padding-left: 20px;
-    font-size: 1.2em;
+    font-size: 1.4em;
     color: white;
+    display: inline;
   }
-
 
   #logo {
     padding: 0 10px;
@@ -583,6 +803,7 @@ li>a:only-child:after {
     margin-top: 20px;
     width: 110px;
     height: auto;
+    border-radius: 10%;
   }
 
   #logoImage:hover {
@@ -747,8 +968,7 @@ li>a:only-child:after {
   }
 
 
-   /* ##### Flexbox used to layout Company Background page #### */
-  
+   /* ##### Flexbox used to layout Company Background page #### */  
    .container2 {
     display: flex;
     flex-wrap: wrap;
@@ -811,33 +1031,69 @@ li>a:only-child:after {
     margin: 10px;
   }
 
-
   /* #### Footer Styling #### */
-
   .footerDiv P {
     font-size: .6em;
   }
 
+
+  /* Production page specific styling */
+  .prodImgDesc {
+    font-size: .7em;
+    margin-left: 10px;
+    line-height: 10px;
+  }
+
+  .prodTopText {
+    font-size: 1.3em;
+    line-height: 24px;
+    text-align: center;
+  }
+
+  .imgandtext{
+    display: block;
+    /* width: 90%;  */
+  }
+  
+  .prodResultImg {
+   width: auto;
+   margin: 0 auto;
+   padding: 0;
+  }
+  
+  .prodBottomTextDiv {
+    margin: 0 auto;
+    padding: 0;
+  }
+  
+  .prodBottomText {
+   margin-top: 20px;
+    font-size: 1.2em;
+    line-height: 24px;
+    text-align: center;
+  }
 }
 
 
-
-/* Laptop size styling */
-@media (min-width: 801px) {
+/* ### LAPTOP screensize MEDIA QUERY ### */
+@media (min-width: 801px) and (max-width: 2000px) {
   
-  Body {
-    font-size: 20px;    background: var(--pastelGrey);
+  body {
+    font-size: 20px;
+    background: var(--pastelGrey);
   }
   
+
   /* ### Nav Menu ### */
     .titleW {
     position: absolute;
     padding-top: 55px;
     padding-left: 20px;
-    font-size: 1.2em;
+    font-size: 1.3em;
     color: white;
     max-width: 100px;
-    line-height: 1.2em;;
+    line-height: 1.2em;
+    display: inline;
   }
   
   #logo {
@@ -857,6 +1113,7 @@ li>a:only-child:after {
     margin-top: 5px;
     width: 130px;
     height: auto;
+    border-radius: 10%;
   }
 
   #logoImage:hover {
@@ -889,7 +1146,7 @@ li>a:only-child:after {
   }
   
 
-  /* ### Tablet Layout CSS ### */
+  /* ### Latop sized Layout CSS ### */
   .grid {
     height: 100%;
     display: grid;
@@ -1041,12 +1298,49 @@ li>a:only-child:after {
     color: var(--pastelDarkBlue);
   }
 
+    /* Production page specific styling */
+    .prodImgDesc {
+      font-size: .8em;
+      /* margin-left: 10px; */
+    }
+  
+    .prodTopText {
+      font-size: 1.3em;
+      line-height: 32px;
+      text-align: center;
+    }
+  
+    .imgandtext{
+      display: block;
+      /* width: 90%;  */
+    }
+    
+    .prodResultImg {
+     width: auto;
+     margin: 0 auto;
+     padding: 0;
+    }
+    
+    .prodBottomTextDiv {
+      margin: 0 auto;
+      padding: 0;
+    }
+    
+    .prodBottomText {
+     margin-top: 20px;
+      font-size: 1.2em;
+      line-height: 32px;
+      text-align: center;
+    }
 }
 
+
+/* ### Media Query for extra large screens ### */
 @media (min-width: 1101px) {
 
   .titleW {
     max-width: 150px;
+    display: inline;
   }
 
   nav a {
@@ -1054,11 +1348,32 @@ li>a:only-child:after {
     font-size: 21px;
   }
 
-
   .cpText1 {
     font-size: 20px;
     line-height: 1.3em;
    }
 
-}
+   /* Product styling */
+   .imgandtext{
+    display: flex;
+    flex-flow: row;
+    width: 100%;  
+    margin: 0 auto;
+  }
   
+  .prodResultImg {
+   margin: 0 auto;
+   padding: 10;
+  }
+  
+  .prodBottomTextDiv {
+    margin: 0 auto;
+    padding: 10;
+  }
+  
+  .prodBottomText {
+    margin: 0 auto;
+    padding: 10px;
+    font-size: .7em;
+  }
+}
