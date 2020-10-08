@@ -1,60 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php require_once('../../../private/initialise.php'); ?>
+<?php $page_title = 'BC - Company Background'; ?>
+<?php include(SHARED_PATH . '\header.php'); ?>
+<link rel="stylesheet" media="all" href="<?php echo url_for('/styles/main.css'); ?>" /> 
+<?php include(SHARED_PATH . '\navmenu.php'); ?>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>BC - Company Background</title>
-  <link rel="stylesheet" href="../../styles/main.css">
-</head>
-
-<body> <!-- Beginning of Entire Page content -->
- 
-  <header> <!-- ### Header area containing the Logo and Navbar ### -->
-      
-  <nav id="navbar">
-    <div id="logo">
-      <a id="logoA" href="../../index.html"><img src="../../images/homepage/bazaar-logo.jpg" alt="Image of Bazaar Ceramics logo" id="logoImage"><span class="titleW">Bazaar Ceramics</span></a>
-    </div>
-
-    <label for="drop" class="toggle" id='main-toggle'><span class="nav-icon"></span></label>
-    <input type="checkbox" id="drop">
-      
-    <ul class="menu"> <!-- Start of Menu structure -->
-      <li><a class="" href="../../index.html">Home</a></li>
-      <li><a class="" href="../members/members.html">Members</a></li>
-      
-    <li>
-      <label for="drop-1" class="toggle current" id="current">About Us +</label>
-      <a class="current" href="#">About Us</a>
-      <input type="checkbox" id="drop-1">
-      <ul>
-        <li><a class="tier2 current" href="company_bg.html">Company Background</a></li>
-        <li><a class="tier2" href="company_mission.html">Mission Statement</a></li>
-        <li><a class="tier2" href="production.html">Production</a></li>
-        <li><a class="tier2" href="testimonials.html">Testimonials</a></li>
-      </ul>
-    </li>
-
-    <li> 
-      <label for="drop-2" class="toggle">Policies +</label>
-      <a href="#">Policies</a>
-      <input type="checkbox" id="drop-2">
-      <ul>
-        <li><a class="tier2" href="../policies/privacy.html">Privacy</a></li>
-        <li><a class="tier2" href="../policies/returns.html">Returns</a></li>
-        <li><a class="tier2" href="../policies/delivery.html">Delivery</a></li>
-        <li><a class="tier2" href="../policies/postsales.html">Post Sales</a></li>
-      </ul>
-    </li>
-
-    <li><a href="../faq/faq.html">FAQ</a></li>
-     
-    </ul> <!-- End of entire Menu structure -->
-  </nav>  
-
-  </header> <!-- End of Header Section (NAV)-->
 
 <div class="container2"> <!--  ## Company Background content Start Area ## -->
   
@@ -122,13 +71,58 @@
 
 </div> <!-- ### End of Container2 and section info ###-->
 
+<!-- ## Start of Footer Content ### -->
+<?php include(SHARED_PATH . '\footer.php'); ?>
 
-<footer>
-    <div class="footerDiv">
-      <p>Website designed and developed by Heath Burton aka-Rubickdev</p>
+
+
+
+
+
+
+<!-- ################## Nav menu for safekeeps ##################### -->
+
+<!-- <body> 
+ 
+  <header> 
+      
+  <nav id="navbar">
+    <div id="logo">
+      <a id="logoA" href="../../index.html"><img src="../../images/homepage/bazaar-logo.jpg" alt="Image of Bazaar Ceramics logo" id="logoImage"><span class="titleW">Bazaar Ceramics</span></a>
     </div>
-  </footer>
 
+    <label for="drop" class="toggle" id='main-toggle'><span class="nav-icon"></span></label>
+    <input type="checkbox" id="drop">
+      
+    <ul class="menu"> 
+      <li><a class="" href="../../index.html">Home</a></li>
+      <li><a class="" href="../members/members.html">Members</a></li>
+      
+    <li>
+      <label for="drop-1" class="toggle current" id="current">About Us +</label>
+      <a class="current" href="#">About Us</a>
+      <input type="checkbox" id="drop-1">
+      <ul>
+        <li><a class="tier2 current" href="company_bg.html">Company Background</a></li>
+        <li><a class="tier2" href="company_mission.html">Mission Statement</a></li>
+        <li><a class="tier2" href="production.html">Production</a></li>
+        <li><a class="tier2" href="testimonials.html">Testimonials</a></li>
+      </ul>
+    </li>
 
-</body>
-</html>
+    <li> 
+      <label for="drop-2" class="toggle">Policies +</label>
+      <a href="#">Policies</a>
+      <input type="checkbox" id="drop-2">
+      <ul>
+        <li><a class="tier2" href="../policies/privacy.html">Privacy</a></li>
+        <li><a class="tier2" href="../policies/returns.html">Returns</a></li>
+        <li><a class="tier2" href="../policies/delivery.html">Delivery</a></li>
+        <li><a class="tier2" href="../policies/postsales.html">Post Sales</a></li>
+      </ul>
+    </li>
+
+    <li><a href="../faq/faq.html">FAQ</a></li>
+     
+    </ul> 
+  </nav>   -->

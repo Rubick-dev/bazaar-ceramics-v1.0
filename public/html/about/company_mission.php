@@ -1,17 +1,39 @@
+<?php require_once('../../../private/initialise.php'); ?>
+<?php $page_title = 'BC - Company Mission'; ?>
+<?php include(SHARED_PATH . '\header.php'); ?>
+<link rel="stylesheet" media="all" href="<?php echo url_for('/styles/main.css'); ?>" /> 
+<?php include(SHARED_PATH . '\navmenu.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
-  
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>BC - Company Mission</title>
-  <link rel="stylesheet" href="../../styles/main.css">
-</head>
 
-<body> <!-- Beginning of Entire Page content -->
+
+  <div class="container">
+
+    <div class="companyMissionInfoContainer">
+      <h2>Mission</h2>
+      <p>Bazaar Ceramics is committed to producing unique, evocative contemporary Ceramic Art of the highest technical quality.</p> 
+      <p>Our Goals:</p>
+      <ol>
+        <li>To produce unique hand crafted pieces for the individual and corporate collector</li>
+        <li>To showcase the best of Australian Ceramic Art and Design</li>
+        <li>To provide an extensive range of well crafted and designed domestic ware</li>
+        <li>To showcase technical excellence in ceramic technology</li>
+      </ol>
+    </div> 
+
+
+  </div> <!-- End of the Middle container-->
+
+<!-- ## Start of Footer Content ### -->
+<?php include(SHARED_PATH . '\footer.php'); ?>
+
+
+
+
+<!-- SAVING FOR SAFE KEEPS
+<body> 
  
-  <header> <!-- ### Header area containing the Logo and Navbar ### -->
+  <header>
       
   <nav id="navbar">
     <div id="logo">
@@ -21,7 +43,7 @@
     <label for="drop" class="toggle" id='main-toggle'><span class="nav-icon"></span></label>
     <input type="checkbox" id="drop">
       
-    <ul class="menu"> <!-- Start of Menu structure -->
+    <ul class="menu"> 
       <li><a class="" href="../../index.html">Home</a></li>
       <li><a class="" href="../members/members.html">Members</a></li>
       
@@ -51,33 +73,7 @@
 
       <li><a href="../faq/faq.html">FAQ</a></li>
       
-    </ul> <!-- End of entire Menu structure -->
+    </ul> 
   </nav>  
 
-  </header> <!-- End of Header Section (NAV)-->
-
-  <div class="container">
-
-    <div class="companyMissionInfoContainer">
-      <h2>Mission</h2>
-      <p>Bazaar Ceramics is committed to producing unique, evocative contemporary Ceramic Art of the highest technical quality.</p> 
-      <p>Our Goals:</p>
-      <ol>
-        <li>To produce unique hand crafted pieces for the individual and corporate collector</li>
-        <li>To showcase the best of Australian Ceramic Art and Design</li>
-        <li>To provide an extensive range of well crafted and designed domestic ware</li>
-        <li>To showcase technical excellence in ceramic technology</li>
-      </ol>
-    </div> 
-
-
-  </div> <!-- End of the Middle container-->
-
-  <footer>
-      <div class="footerDiv">
-        <p>Website designed and developed by Heath Burton aka-Rubickdev</p>
-      </div>
-    </footer>
-
-</body>
-</html>
+  </header>  -->
