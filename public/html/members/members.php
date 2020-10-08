@@ -1,7 +1,5 @@
 ﻿<?php require_once('../../../private/initialise.php'); ?>
 <?php $page_title = 'Bazaar Ceramics - Members'; ?>
-
-<!-- Start of page content -->
 <?php include(SHARED_PATH . '\header.php'); ?>
 <link rel="stylesheet" href="../../styles/main.css"> 
 <script src="../../scripts/formScripts.js"></script>

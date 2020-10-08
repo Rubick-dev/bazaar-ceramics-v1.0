@@ -21,26 +21,26 @@
                 
       <li>
         <label for="drop-1" class="toggle">About Us +</label>
-        <a href="#">About Us</a>
+        <a class="aboutTopMenu" href="#">About Us</a>
         <input type="checkbox" id="drop-1">
         <ul>
-          <li><a class="tier2" href="<?php echo url_for('html/about/company_bg.php'); ?>">Company Background</a></li>
-          <li><a class="tier2" href="<?php echo url_for('html/about/company_mission.php'); ?>">Mission Statement</a></li>
-          <li><a class="tier2" href="<?php echo url_for('html/about/production.php'); ?>">Production</a></li>
-          <li><a class="tier2" href="<?php echo url_for('html/about/testimonials.php'); ?>">Testimonials</a></li>
+          <li><a class="tier2 aboutBackgroundMenu" href="<?php echo url_for('html/about/company_bg.php'); ?>">Company Background</a></li>
+          <li><a class="tier2 aboutMissionMenu" href="<?php echo url_for('html/about/company_mission.php'); ?>">Mission Statement</a></li>
+          <li><a class="tier2 aboutProductionMenu" href="<?php echo url_for('html/about/production.php'); ?>">Production</a></li>
+          <li><a class="tier2 aboutTestimonialsMenu" href="<?php echo url_for('html/about/testimonials.php'); ?>">Testimonials</a></li>
         </ul>
       </li>
 
 
       <li> 
         <label for="drop-2" class="toggle">Policies +</label>
-        <a href="#">Policies</a>
+        <a class="policiesTopMenu" href="#">Policies</a>
         <input type="checkbox" id="drop-2">
         <ul>
-          <li><a class="tier2" href="<?php echo url_for('html/policies/privacy.php'); ?>">Privacy</a></li>
-          <li><a class="tier2" href="<?php echo url_for('html/policies/returns.php'); ?>'">Returns</a></li>
-          <li><a class="tier2" href="<?php echo url_for('html/policies/delivery.php'); ?>">Delivery</a></li>
-          <li><a class="tier2" href="<?php echo url_for('html/policies/postsales.php'); ?>">Post Sales</a></li>
+          <li><a class="tier2 policiesPrivacyMenu" href="<?php echo url_for('html/policies/privacy.php'); ?>">Privacy</a></li>
+          <li><a class="tier2 policiesReturnsMenu" href="<?php echo url_for('html/policies/returns.php'); ?>'">Returns</a></li>
+          <li><a class="tier2 policiesDeliveriesMenu" href="<?php echo url_for('html/policies/delivery.php'); ?>">Delivery</a></li>
+          <li><a class="tier2 policiesPostSalesMenu" href="<?php echo url_for('html/policies/postsales.php'); ?>">Post Sales</a></li>
         </ul>
       </li>
 
