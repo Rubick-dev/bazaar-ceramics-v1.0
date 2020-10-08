@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
 :root {
-  /* --pastelGrey: #5F6366; */
   --pastelGrey: #262626;
   --pastelDarkBlue: #4D6D9A;
   --pastelBluey: #86B3D1;
@@ -241,8 +240,825 @@ li>a:only-child:after {
   font-size: .8em;
 }
 
+
 /* Company Mission specific styling*/
 .companyMissionInfoContainer {
   margin: 0 10% 10% 10%;
   justify-content: left;
 }
+
+
+/* Mobile size screen styling css */
+@media screen and (max-width: 500px) and (min-width: 50px) {
+  
+  Body {
+    font-size: 10px;
+  }
+
+
+  /* ### Nav Menu ### */
+  .titleW {
+    position: absolute;
+    padding-top: 55px;
+    padding-left: 10px;
+    font-size: 1em;
+    color: white;
+  }
+
+  #logo {
+    padding: 0 10px;
+    float: left;
+    font-size: 20px;
+    line-height: 60px;
+  }
+
+  #logoImage {
+    border: 2px solid transparent;
+    margin-top: 20px;
+    border-radius: 10%;
+  }
+
+  #logoImage:hover {
+    transition: ease-in-out 250ms;
+    border: 2px solid var(--pastelPink);
+  }
+
+  .current,
+  #current {
+    border: 3px solid var(--pastelPink);
+  }
+
+  nav a {
+    padding-left: 5px;
+    font-size: 10px;
+    line-height: 30px;
+  }
+
+  #navbar {
+    margin: 0;
+    width: 100%;
+    border-bottom: 2px solid var(--pastelDarkBlue);
+  }
+
+  nav ul {
+    float: none;
+  }
+
+  .toggle+a,
+  .menu {
+    display: none;
+  }
+
+  .toggle {
+    display: block;
+    background-color: var(--pastelDarkBlue);
+    color: var(--pastelLightBlue);
+    font-size: 10px;
+    line-height: 30px; 
+    text-decoration: none;
+    border: none;
+    padding-left: 5px;
+
+  }
+
+  #main-toggle {
+    margin-top: 35px;
+    background-color: var(--pastelDarkBlue);
+  }
+
+  .toggle:hover {
+    background-color: var(--pastelGrey);
+  }
+
+  [id^=drop]:checked+ul {
+    display: block;
+  }
+
+  nav ul li {
+    displaY: block;
+    width: 100%;
+  }
+
+  nav ul ul .toggle,
+  nav ul ul a {
+    padding: 0 40px;
+  }
+
+  nav ul li ul li .toggle,
+  nav ul ul a {
+    background-color: var(--pastelDarkBlue)
+  }
+
+  nav ul ul {
+    float: none;
+    position: static;
+    color: var(--pastelLightBlue);
+  }
+
+  nav ul ul li:hover>ul,
+  nav ul li:hover>ul {
+    display: none;
+  }
+
+  nav ul ul li {
+    display: block;
+    width: 100%;
+  }
+
+
+  /* ### Mobile Page Layout ###    */
+  .grid {
+    height: 100%;
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(9, auto);
+    justify-items: center;
+    align-items: center;
+    grid-template-areas:
+      "a a a a a a"
+      "f f f f f f"
+      "c c c c c c"
+      "b b b b b b"
+      "e e e e e e"
+      "d d d d d d"
+      "g g g g g g"
+      ". h h h h ."
+      ". . i i . .";
+  }
+
+  .mainPicture {
+    grid-area: a;
+  }
+  
+  .mainPicture img {
+    width: 300px;
+    height: auto;
+    margin-top: 25px;
+  }
+
+  .contentBottomText {
+    grid-area: f;
+    line-height: 1.5em;
+    margin: 0 10%;
+  }
+
+  .topPic {
+    grid-area: c;
+    margin-top: 40px;
+  }
+  
+  .topPicText {
+    grid-area: b;
+  }
+  
+  .bottomPic {
+    grid-area: e;
+    margin-top: 40px;
+  }
+  
+  .bottomPicText {
+    grid-area: d;
+  }
+
+  .contentBottomEmailInstruct {
+    grid-area: g;
+    margin-top: 50px;
+    line-height: 1.3em;;
+  }
+  
+  .inputBox {
+    grid-area: h;
+    width: 100%;
+  }
+  
+  .buttonDiv {
+    grid-area: i;
+  }
+
+  /* Form Styling */
+  .input-group,
+  .inputBox,
+  .form-control {
+    justify-self: center;
+  }
+
+  .form-control {
+    width: 100%;
+    align-content: center;
+  }
+
+
+  /* Button Styling */
+  .buttonDiv{
+    margin-right: 0;
+  }
+
+  /* Footer Styling */
+
+.footerDiv P {
+  font-size: .5em;
+}
+
+
+  /* ##### Flexbox used to layout Company Background page #### */
+  
+  .container2 {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .cpHeading h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--pastelPink);
+  }
+  
+  .cpText1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .cpTextp1,
+  .cpTextp2,
+  .cpTextp3,
+  .cpTextp4 {
+    line-height: 1.3em;
+    margin-bottom: 20px;
+    padding: 5%;
+    padding-top: 0;
+  }
+
+  .cpImage1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .cpImageGroup2,
+  .cpImageGroup2A,
+  .cpImageGroup2B,
+  .cpImageGroup2C,
+  .cpImageGroup2D {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 60%;
+  }
+
+  #designImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    height: auto;
+  }
+
+  .picture3 {
+    width: 100%;
+    height: auto;
+    margin: 10px;
+  }
+}
+
+/* ### Added a very small sizing adjustment to keep the page readable #### */
+
+@media screen and (max-width: 275px) {
+
+  .titleW {
+    display: none;
+  }
+
+  .mainPicture img {
+    width: 200px;
+  }
+
+  .footerDiv P {
+    font-size: .3em;
+  }
+
+}
+
+
+/* Tablet size screen styling */
+@media (max-width: 800px) and (min-width: 501px) {
+  
+  Body {
+    font-size: 15px;
+    background:var(--pastelGrey);
+  }
+  
+
+  /* ### Nav Menu ### */
+    .titleW {
+    position: absolute;
+    padding-top: 55px;
+    padding-left: 20px;
+    font-size: 1.2em;
+    color: white;
+  }
+
+
+  #logo {
+    padding: 0 10px;
+    float: left;
+    font-size: 20px;
+    line-height: 60px;
+  }
+
+  #logoA {
+    padding-left: 0;
+  }
+
+  #logoImage {
+    border: 2px solid transparent;
+    margin-top: 20px;
+    width: 110px;
+    height: auto;
+  }
+
+  #logoImage:hover {
+    transition: ease-in-out 250ms;
+    border: 2px solid var(--pastelPink);
+  }
+
+  .current,
+  #current {
+    border: 3px solid var(--pastelPink);
+  }
+
+  nav a {
+    padding-left: 5px;
+  }
+
+  #navbar {
+    margin: 0;
+    width: 100%;
+    border-bottom: 2px solid var(--pastelDarkBlue);
+  }
+
+  nav ul {
+    float: none;
+  }
+
+  .toggle+a,
+  .menu {
+    display: none;
+  }
+
+  .toggle {
+    display: block;
+    background-color: var(--pastelDarkBlue);
+    color: var(--pastelLightBlue);
+    font-size: 20px;
+    line-height: 60px; 
+    text-decoration: none;
+    border: none;
+    padding-left: 5px;
+  }
+
+  #main-toggle {
+    margin-top: 55px;
+    background-color: var(--pastelDarkBlue);
+  }
+
+  .toggle:hover {
+    background-color: var(--pastelGrey);
+  }
+
+  [id^=drop]:checked+ul {
+    display: block;
+  }
+
+  nav ul li {
+    displaY: block;
+    width: 100%;
+  }
+
+  nav ul ul .toggle,
+  nav ul ul a {
+    padding: 0 40px;
+  }
+
+  nav ul li ul li .toggle,
+  nav ul ul a {
+    background-color: var(--pastelDarkBlue)
+  }
+
+  nav ul ul {
+    float: none;
+    position: static;
+    color: var(--pastelLightBlue);
+  }
+
+  nav ul ul li:hover>ul,
+  nav ul li:hover>ul {
+    display: none;
+  }
+
+  nav ul ul li {
+    display: block;
+    width: 100%;
+  }
+
+
+  /* ### Tablet Layout CSS ### */
+  .grid {
+    height: 100%;
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(8, auto);
+    justify-items: center;
+    align-items: center;
+    grid-template-areas:
+      "a a a a a a a"
+      "f f f f f f f"
+      "c c c . e e e"
+      "c c c . e e e"
+      "b b b . d d d"
+      "g g g g g g g"
+      ". h h h h h ."
+      ". . . i . . ."
+  }
+
+  .mainPicture {
+    grid-area: a;
+  }
+  
+  .mainPicture img {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+  }
+
+  .contentBottomText {
+    grid-area: f;
+    line-height: 1.5em;
+    margin: 0 6%;
+  }
+
+  .topPic {
+    grid-area: c;
+    margin-top: 40px;
+    width: 200px;
+    height: auto;
+    justify-content: right;
+  }
+  
+  .topPicText {
+    grid-area: b;
+  }
+  
+  .bottomPic {
+    grid-area: e;
+    margin-top: 40px;
+  }
+  
+  .bottomPicText {
+    grid-area: d;
+  }
+
+  .contentBottomEmailInstruct {
+    grid-area: g;
+    margin-top: 50px;
+    line-height: 1.3em;;
+  }
+  
+  .inputBox {
+    grid-area: h;
+    width: 100%;
+  }
+  
+  .buttonDiv {
+    grid-area: i;
+  }
+  
+  .buttonDiv{
+    margin-right: 0;
+  }
+
+
+   /* ##### Flexbox used to layout Company Background page #### */
+  
+   .container2 {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .cpHeading h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--pastelPink);
+  }
+  
+  .cpText1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .cpTextp1,
+  .cpTextp2,
+  .cpTextp3,
+  .cpTextp4 {
+    line-height: 1.3em;
+    margin-bottom: 20px;
+    padding: 5%;
+    padding-top: 0;
+  }
+
+  .cpImage1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+  }
+    
+  .cpImageGroup2,
+  .cpImageGroup2A,
+  .cpImageGroup2B,
+  .cpImageGroup2C,
+  .cpImageGroup2D {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 60%;
+  }
+
+  #designImage {
+    width: 90%;
+    height: auto;
+  }
+
+  .picture3 {
+    width: 100%;
+    height: auto;
+    margin: 10px;
+  }
+
+
+  /* #### Footer Styling #### */
+
+  .footerDiv P {
+    font-size: .6em;
+  }
+
+}
+
+
+
+/* Laptop size styling */
+@media (min-width: 801px) {
+  
+  Body {
+    font-size: 20px;    background: var(--pastelGrey);
+  }
+  
+  /* ### Nav Menu ### */
+    .titleW {
+    position: absolute;
+    padding-top: 55px;
+    padding-left: 20px;
+    font-size: 1.2em;
+    color: white;
+    max-width: 100px;
+    line-height: 1.2em;;
+  }
+  
+  #logo {
+    padding: 0;
+    padding-left: 5px;
+    float: left;
+    font-size: 20px;
+    line-height: 60px;
+  }
+
+  #logoA {
+    padding: 0;
+  }
+
+  #logoImage {
+    border: 2px solid transparent;
+    margin-top: 5px;
+    width: 130px;
+    height: auto;
+  }
+
+  #logoImage:hover {
+    transition: ease-in-out 250ms;
+    border: 2px solid var(--pastelPink);
+  }
+
+  .current {
+    border: 3px solid var(--pastelPink);
+  }
+
+  nav a {
+    padding: 10px;
+    font-size: 15px;
+    }
+
+  #navbar {
+    margin: 0;
+    width: 100%;
+    border-bottom: 2px solid var(--pastelDarkBlue);
+  }
+
+  nav ul {
+    float: right;
+  }
+
+  .menu {
+    margin-top: 37px;
+    margin-right: 10px;
+  }
+  
+
+  /* ### Tablet Layout CSS ### */
+  .grid {
+    height: 100%;
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(7, auto);
+    justify-items: center;
+    align-items: center;
+    grid-template-areas:
+      "a a a a a a a"
+      "f f f f f f f"
+      "c c c . e e e"
+      "c c c . e e e"
+      "b b b . d d d"
+      "g g g g g g g"
+      ". h h h i i ."
+    }
+
+  .mainPicture {
+    grid-area: a;
+  }
+  
+  .mainPicture img {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+  }
+
+  .contentBottomText {
+    grid-area: f;
+    line-height: 1.5em;
+    margin: 0 6%;
+  }
+
+  .topPic {
+    grid-area: c;
+    margin-top: 40px;
+    width: 200px;
+    height: auto;
+    justify-content: right;
+  }
+  
+  .topPicText {
+    grid-area: b;
+  }
+  
+  .bottomPic {
+    grid-area: e;
+    margin-top: 40px;
+  }
+  
+  .bottomPicText {
+    grid-area: d;
+  }
+
+  .contentBottomEmailInstruct {
+    grid-area: g;
+    margin-top: 50px;
+    line-height: 1.3em;;
+  }
+  
+  .inputBox {
+    grid-area: h;
+    width: 100%;
+  }
+  
+  .buttonDiv {
+    grid-area: i;
+  }
+  
+  .buttonDiv{
+    margin-right: 0;
+  }
+
+  /* ### Flexbox used to layout Company Background page for Laptop size ### */
+  .container2 {
+    font-size: 20px;
+  }
+
+  .cpHeading h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--pastelPink);
+    flex-basis: 100%;
+    margin: 50px 0;
+  }
+
+  .cpHeading {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .cpText1 {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    width: 48%;
+    align-self: center;
+    padding: 1%;
+    font-size: 15px;
+    line-height: 1.2em;
+   }
+  
+  .cpImage1 {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    width: 48%;
+    align-self: center;
+    padding: 1%;
+  }
+
+  .cpTextp2 {
+    padding: 5%;
+    background-color: var(--pastelLightBlue);
+    color: var(--pastelDarkBlue);
+  }
+
+  .cpTextp3 {
+    padding: 5%;
+    background-color: var(--pastelGrey);
+  }
+
+  .cpImageGroup2A,
+  .cpImageGroup2B,
+  .cpImageGroup2C,
+  .cpImageGroup2D, 
+  .cpImageGroup2 { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 60%;
+  }
+
+  .picture3 {
+    display: flex;
+    width: 100%;
+    height: auto;
+    margin: 10px;
+  }
+
+  .cpText4 {
+    padding: 5%;
+    background-color: var(--pastelLightBlue);
+    color: var(--pastelDarkBlue);
+  }
+
+}
+
+@media (min-width: 1101px) {
+
+  .titleW {
+    max-width: 150px;
+  }
+
+  nav a {
+    padding: 18px;
+    font-size: 21px;
+  }
+
+
+  .cpText1 {
+    font-size: 20px;
+    line-height: 1.3em;
+   }
+
+}
+  
