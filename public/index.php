@@ -56,4 +56,4 @@
   </div> <!-- End of Content Container -->
     
   <!-- ## Start of Footer Content ### -->
-  <?php include('../private/shared/footer.php'); ?>
+  <?php include(SHARED_PATH . '/footer.php'); ?>
