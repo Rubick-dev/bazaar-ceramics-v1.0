@@ -12,7 +12,7 @@
 
 </head>
 <body> <!-- Beginning of Entire Page content -->
-  <a class="welcomeSplash" href="public/index.php"><img src="public/images/homepage/potteryCeramics" alt="Welcome page iamge of pots"><a>
+  <a class="welcomeSplash" href="public/index.php"><img src="/public/images/homepage/PotteryCeramics.jpg" alt="Welcome page iamge of pots"><a>
   <P>WELCOME TO BAZAAR CERAMICS - ClICK TO ENTER SITE</P>
 </body>
   
