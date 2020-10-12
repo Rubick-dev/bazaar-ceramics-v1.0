@@ -1,8 +1,8 @@
 <?php require_once('../../../private/initialise.php'); ?>
 <?php $page_title = 'BC - Post Sales Policy'; ?>
-<?php include(SHARED_PATH . '/header.php'); ?>
+<?php include(SHARED_PATH . '\header.php'); ?>
 <link rel="stylesheet" media="all" href="<?php echo url_for('/styles/main.css'); ?>" /> 
-<?php include(SHARED_PATH . '/navmenu.php'); ?>
+<?php include(SHARED_PATH . '\navmenu.php'); ?>
 
 
 
@@ -14,4 +14,4 @@
 
 
 <!-- ## Start of Footer Content ### -->
-<?php include(SHARED_PATH . '/footer.php'); ?>
+<?php include(SHARED_PATH . '\footer.php'); ?>
