@@ -21,12 +21,12 @@ function displayImage(e){
   enlargeArray[4] = new Image();
   enlargeArray[4].src="../../images/slideshow/enlarged/finishing2.jpg";
   enlargeArray[4].alt="Enlarged image of a person fine finishing clay";
+  
 
 
   if (e.target !== e.currentTarget) {
     var imageLarge = e.target.id;
-    
-   
+ 
     switch(imageLarge) {
       case "imageOne":
         document.getElementById('selectedImage').innerHTML = 
@@ -53,7 +53,6 @@ function displayImage(e){
         `<img src="${enlargeArray[4].src}" alt="${enlargeArray[4].alt}" class="mainPicture fade-in">`
       break;
     }
-
     
   }
   e.stopPropagation;
