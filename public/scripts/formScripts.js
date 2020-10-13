@@ -17,9 +17,8 @@ function sum(){
   else if(val2 < 1 || val2===null || isNaN(val2)){
     val2 = parseInt(itemPrice);
     let result = parseFloat(val1)*parseFloat(val2);
-    //document.getElementById('price').value=val2;
     document.getElementById('totalPrice').value=result;
-    }
+  }
 
   // if varibables are appropriate values, performs the calc and inserts the result
   else{
@@ -39,7 +38,7 @@ return;
 
 // Function to provide a confirm box and information list on pressing the submit button
 function submitForm(){
-
+  
   // Builds the message from the user data for the confirm dialog box message.
   let message = "You are about to order the following items\n\n ";
   message += "Name: " + itemName + "\n ";
