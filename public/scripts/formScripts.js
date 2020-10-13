@@ -38,7 +38,7 @@ return;
 
 // Function to provide a confirm box and information list on pressing the submit button
 function submitForm(){
-  
+
   // Builds the message from the user data for the confirm dialog box message.
   let message = "You are about to order the following items\n\n ";
   message += "Name: " + itemName + "\n ";
