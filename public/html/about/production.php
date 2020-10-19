@@ -1,6 +1,6 @@
 <?php require_once('../../../private/initialise.php'); ?>
 <?php $page_title = 'BC - Production'; ?>
-<?php include(SHARED_PATH . '/header.php'); ?>
+<?php include(SHARED_PATH . '/header.inc'); ?>
 <link rel="stylesheet" media="all" href="<?php echo url_for('/styles/main.css'); ?>" /> 
 <script src="../../scripts/slideshow.js"></script>
 
@@ -148,4 +148,4 @@
 </div> <!-- ### End of Container2 and section info ###-->
 
 <!-- ## Start of Footer Content ### -->
-<?php include(SHARED_PATH . '/footer.php'); ?>
+<?php include(SHARED_PATH . '/footer.inc'); ?>
