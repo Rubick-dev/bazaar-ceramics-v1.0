@@ -47,7 +47,7 @@
 
       <li><a class="faqMenu" href="<?php echo url_for('/html/faq/faq.php'); ?>">FAQ</a></li>
 
-      <li><a class="loginMenu" href="<?php echo url_for('/html/login/index.php'); ?>">Login</a></li>
+      <li><a class="loginMenu" href="<?php echo url_for('/html/login/login.php'); ?>">Login</a></li>
      
     </ul> <!-- End of entire Menu structure -->
   </nav>  

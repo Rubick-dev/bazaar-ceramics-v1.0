@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+:root {
+  --pastelGrey: #262626;
+  --pastelDarkBlue: #4D6D9A;
+  --pastelBluey: #86B3D1;
+  --pastelLightBlue: #99cED3;
+  --pastelPink: #EdB58F;
+}
+
+body {
+  margin: auto;
+  background: var(--pastelGrey);
+  color: white;
+}
+
+#container {
+  width: 40%;
+  margin: 0 auto;
+}
+
+.loginSection {
+  text-align: center;
+}
+
+.logo  {
+  margin: auto;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.buttons {
+  text-align: center;
+}
+
+.cancelButton {
+  background-color: var(--pastelDarkBlue);
+  border-radius: 10%;
+  border: 1px solid red;
+}
