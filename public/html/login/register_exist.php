@@ -1,26 +1,29 @@
 <?php require_once('../../../private/initialise.php');
 
 $errors = [];
-$username = '';
-$password = '';
+$customer_email = '';
+
 
 if(is_logged_in()){
   redirect_to(url_for('/index.php'));
-
 } else {
-// Checks for post request to increase security
+  // Checks for post request to increase security
   if(is_post_request()) {
 
-    $username = $_POST['username'] ?? ''; // Storing user inputs as variables
-    $password = $_POST['password'] ?? '';
+    $customer_email = $_POST['customer_email'] ?? ''; // Storing customer email as variable
 
     // Validations
-    if(is_blank($username)) {
-      $errors[] = "Username cannot be blank.";
+    if(is_blank($customer_email)) {
+      $errors[] = "email address cannot be blank.";
     }
-    if(is_blank($password)) {
-      $errors[] = "Password cannot be blank.";
+
+    if(true){
+
     }
+
+    // ###################################################################
+    // THIS IS THE CODE I AM UP TO AT THE MOMENT NEEDS Massive adjustments
+    // ###################################################################
 
     // if there were no errors, try to login
     if(empty($errors)) {
@@ -49,7 +52,7 @@ if(is_logged_in()){
 
 ?>
 
-<?php $page_title = 'BC - Login Page'; ?>
+<?php $page_title = 'BC - Members Rego'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 <link rel="stylesheet" media="all" href="<?php echo url_for('/styles/styles3.css'); ?>" />
 </head>
@@ -65,14 +68,19 @@ if(is_logged_in()){
     </div>
 
     <div class="loginSection">
-      <h1>Members Login</h1>
+      <h1>Existing Customer Members Registration</h1>
 
-      <form action="login.php" method="post">
-      Username:<br />
-      <input type="text" name="username" value="<?php echo h($username); ?>" /><br />
+      <form action="/register_exist.php" method="post">
+      <p class="registerText">Please enter the following fields and click the Register button when complete:<br /><br />
+      Email Address:<br />
+      <input type="text" name="customer_email" value="" /><br />
+      User Name:<br />
+      <input type="text" name="user_id" value="" /><br />
       Password:<br />
       <input type="password" name="password" value="" /><br />
-      <input type="submit" name="submit" value="Login"  />
+      Confirm Password:<br />
+      <input type="password" name="confirm_password" value="" /><br />
+      <input type="submit" name="submit" value="Register"  />
       </form>
       <?php echo display_errors($errors); ?>
       <br><br>
@@ -82,22 +90,17 @@ if(is_logged_in()){
 <!-- Navigation to register -->
     <div class="otherOptions">
       <div class="buttons">
-        <p class="registerText">Not a member yet? Register now as a New or Existing Customer:</p>
+        <p class="registerText">Not a registered customer? Click here to register.</p>
         <a href="<?php echo url_for('/html/login/register_new.php'); ?>">
-          <input type="button" class="" Value="New Customer" />
-        </a>
-        <a href="<?php echo url_for('/html/login/register_exist.php'); ?>">
-          <input type="button" class="" value="Existing Customer"  /> 
+          <input type="button" class="" value="New Customer Registration"  /> 
         </a>   
         <br><br>
-        <div>
-          <form action="<?php echo url_for('/html/login/logout.php'); ?>">
-            <input type="submit" name="submit" value="Cancel Login" class="cancelButton" />
-          </form>
-        </div> <!-- End of buttons Div -->
-      </div>
-    </div> <!-- end of otherOptions Div -->
+        <form action="<?php echo url_for('/html/login/logout.php'); ?>">
+          <input type="submit" name="submit" value="Cancel Registration" class="cancelButton" />
+        </form>
+      </div><!-- end of buttons div -->
+    </div> <!-- end of otherOptions div -->
 
   </div> <!-- end of page container section -->
 
-<?php include(SHARED_PATH . '/login_footer.php'); ?>
+  <?php include(SHARED_PATH . '/login_footer.php'); ?>

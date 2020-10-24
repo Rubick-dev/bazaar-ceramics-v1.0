@@ -1,6 +1,6 @@
 <?php
 
-// Checking to see that user is in the db
+// Checking to see that user with membership is in the db
 function find_member_by_username($username) {
   global $db;
 
@@ -14,7 +14,18 @@ function find_member_by_username($username) {
   return $member; // returns an assoc. array
 }
 
+function find_customer_by_email($em) {
+  global $db;
 
+  $sql = "SELECT * FROM customer ";
+  $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
+  $sql .= "LIMIT 1";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $admin = mysqli_fetch_assoc($result); // find first
+  mysqli_free_result($result);
+  return $admin; // returns an assoc. array
+}
 
 
 
