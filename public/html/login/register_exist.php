@@ -2,15 +2,22 @@
 
 $errors = [];
 $customer_email = '';
+$user_id = '';
+$password = '';
 
 
+
+// Must not be logged in to be able to become a member.
 if(is_logged_in()){
   redirect_to(url_for('/index.php'));
 } else {
   // Checks for post request to increase security
   if(is_post_request()) {
 
-    $customer_email = $_POST['customer_email'] ?? ''; // Storing customer email as variable
+    $member['$customer_email'] = $_POST['customer_email'] ?? '';
+    $member[''] = $_POST[''] ?? '';
+    $member[''] = $_POST[''] ?? '';
+    $member[''] = $_POST[''] ?? '';
 
     // Validations
     if(is_blank($customer_email)) {
@@ -70,7 +77,7 @@ if(is_logged_in()){
     <div class="loginSection">
       <h1>Existing Customer Members Registration</h1>
 
-      <form action="/register_exist.php" method="post">
+      <form action="register_exist.php" method="post">
       <p class="registerText">Please enter the following fields and click the Register button when complete:<br /><br />
       Email Address:<br />
       <input type="text" name="customer_email" value="" /><br />
