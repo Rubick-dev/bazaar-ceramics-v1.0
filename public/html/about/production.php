@@ -58,7 +58,13 @@
      
     </ul> <!-- End of entire Menu structure -->
   </nav>  
-
+  <?php 
+    if(is_logged_in()){
+      echo (display_welcome_message());
+    } else {
+      // Do nothing!
+    }
+  ?>
   </header> <!-- End of Header Section - NAV -->
 
 

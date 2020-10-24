@@ -35,17 +35,12 @@ if(is_post_request()) {
         redirect_to(url_for('/index.php'));
       } else {
         // username found, but password does not match
-        // $errors[] = $login_failure_msg;
-        // $errors[] = var_dump($member);
-        $errors[] = 'Login Password issue';
+        $errors[] = $login_failure_msg;
       }
-
     } else {
       // no username found
-      // $errors[] = $login_failure_msg;
-      $errors[] = 'No user name found';
+      $errors[] = $login_failure_msg;
     }
-
   }
 
 }
