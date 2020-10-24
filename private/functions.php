@@ -49,9 +49,65 @@ function error_500() {
   exit();
 }
 
+function display_errors($errors=array()) {
+  $output = '';
+  if(!empty($errors)) {
+    $output .= "<div class=\"errors\">";
+    $output .= "Please repair the following errors:";
+    $output .= "<ul>";
+    foreach($errors as $error) {
+      $output .= "<li>" . h($error) . "</li>";
+    }
+    $output .= "</ul>";
+    $output .= "</div>";
+  }
+  return $output;
+}
+
 // ##################################################
 // ###            SESSION MANAGEMENT              ###
 // ##################################################
+
+// These two functions following work together to collect username and display oneach page
+function get_user_welcome_message() {
+  if(isset($_SESSION['username']) && $_SESSION['username'] != '') {
+    $msg = $_SESSION['username'];
+    return $msg;
+  }
+}
+
+function display_welcome_message() {
+  $msg = get_user_welcome_message();
+  if(!is_blank($msg)) {
+    return '<div id="loggedINMsg">' . 'Welcome to the Bazaar Ceramics Website ' . h($msg) . '</div>';
+  }
+}
+
+
+
+
+
+
+// ######################################################
+// MAY NOT BE NEEDED #####################################
+// #######################################################
+
+function get_and_clear_session_message() {
+  if(isset($_SESSION['message']) && $_SESSION['message'] != '') {
+    $msg = $_SESSION['message'];
+    unset($_SESSION['message']);
+    return $msg;
+  }
+}
+
+function display_session_message() {
+  $msg = get_and_clear_session_message();
+  if(!is_blank($msg)) {
+    return '<div id="message">' . h($msg) . '</div>';
+  }
+}
+
+
 
 ?>
 

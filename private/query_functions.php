@@ -1,5 +1,26 @@
 <?php
 
+// Checking to see that user is in the db
+function find_member_by_username($username) {
+  global $db;
+
+  $sql = "SELECT * FROM member ";
+  $sql .= "WHERE UserID='" . db_escape($db, $username) . "' ";
+  $sql .= "LIMIT 1";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $member = mysqli_fetch_assoc($result); // find first
+  mysqli_free_result($result);
+  return $member; // returns an assoc. array
+}
+
+
+
+
+
+
+
+// ### EVERYTHING BELOW HERE IS FOR REFERENCE ###
   // Subjects
 
   function find_all_subjects($options=[]) {
@@ -456,18 +477,7 @@
     return $admin; // returns an assoc. array
   }
 
-  function find_admin_by_username($username) {
-    global $db;
-
-    $sql = "SELECT * FROM admins ";
-    $sql .= "WHERE username='" . db_escape($db, $username) . "' ";
-    $sql .= "LIMIT 1";
-    $result = mysqli_query($db, $sql);
-    confirm_result_set($result);
-    $admin = mysqli_fetch_assoc($result); // find first
-    mysqli_free_result($result);
-    return $admin; // returns an assoc. array
-  }
+  
 
   function validate_admin($admin, $options=[]) {
 

@@ -10,13 +10,17 @@
 
 body {
   margin: auto;
-  background: var(--pastelGrey);
+  background: var(--pastelDarkBlue);
   color: white;
 }
 
 #container {
   width: 40%;
-  margin: 0 auto;
+  min-width: 300px;
+  padding-top: 5px;
+  margin: 10px auto 0;
+  border: 2px solid black;
+  background: var(--pastelGrey);
 }
 
 .loginSection {
@@ -37,4 +41,22 @@ body {
   background-color: var(--pastelDarkBlue);
   border-radius: 10%;
   border: 1px solid red;
+  padding: 10px;
+}
+
+.otherOptions {
+  padding-bottom: 20px;
+}
+
+.errors {
+  font-size: .6em;
+  color: var(--pastelGrey);
+  border: 1px solid red;
+  background-color: var(--pastelBluey);
+  padding-top: 5px;
+  margin-top: 5px;
+}
+
+.errors ul {
+  list-style-type: none;
 }
