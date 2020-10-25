@@ -14,6 +14,10 @@ if(is_logged_in()){
   // Checks for post request to increase security
   if(is_post_request()) {
 
+    //STEP 1 check if email address is registered in customers datbase
+    //If it is check if CustomerID is listed in both members and customers databses.
+    // if it is, then user is already registered and notify them. 
+
     $member['$customer_email'] = $_POST['customer_email'] ?? '';
     $member[''] = $_POST[''] ?? '';
     $member[''] = $_POST[''] ?? '';
