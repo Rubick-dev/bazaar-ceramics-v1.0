@@ -17,7 +17,6 @@
     return true;
   }
 
-
   // is_logged_in() contains all the logic for determining if a
   // request should be considered a "logged in" request or not.
   // It is the core of require_login() but it can also be called
@@ -26,7 +25,7 @@
   function is_logged_in() {
     // Having a member_id in the session serves a dual-purpose:
     // - Its presence indicates the member is logged in.
-    // - Its value tells which membern for looking up their record.
+    // - Its value tells which member for looking up their record.
     return isset($_SESSION['member_id']);
   }
 

@@ -46,48 +46,26 @@ if(is_logged_in()){
     } else if(!has_password_only_chars($password)){
       $errors[] = "Password must contain only numbers, letters or . or / and contain no spaces";
     } 
-
-  } // End of user input validation checks
-
+      
     //STEP 1 check if email address is registered in customers database
-    
-    //If it is check if CustomerID is listed in both members and customers databses.
-    // if it is, then user is already registered and notify them. 
+    if(empty($errors)) {
 
+      $does_customer_exist = find_member_by_email($customer_email);
+            
+      if($does_customer_exist) {
+        $errors[] = "Did detect"; //To be removed
+      } else {
+      $errors[] = "The email address you entered is not currently registerd under a current customer. Click the New Customer Registration button to signup now";
+      }
+    }
+  } // End of user input validation checks      
 } // End of top of the page else statement
 
 
+    // #######################################################################
+    // # THIS IS THE CODE I AM UP TO AT THE MOMENT NEEDS Massive adjustments #
+    // #######################################################################
 
-
-
-    // ###################################################################
-    // THIS IS THE CODE I AM UP TO AT THE MOMENT NEEDS Massive adjustments
-    // ###################################################################
-
-    // if there were no errors, try to login
-   // if(empty($errors)) {
-      // Using one variable ensures that msg is the same
-   //   $login_failure_msg = "Log in was unsuccessful.";
-
-   //   $member = find_member_by_username($username);
-    //  if($member) {
-
-        // if(password_verify($password, $member['HashedPassword'])) {
-    //      if($password === $member['HashedPassword']) {
-          // password matches
-    //      log_in_member($member);
-    //      redirect_to(url_for('/index.php'));
-    //    } else {
-          // username found, but password does not match
-   //       $errors[] = $login_failure_msg;
-   //     }
-    //  } else {
-        // no username found
-   //     $errors[] = $login_failure_msg;
-   //   }
-  //  }
- // }
-// }
 
 ?>
 

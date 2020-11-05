@@ -14,6 +14,20 @@ function find_member_by_username($username) {
   return $member; // returns an assoc. array
 }
 
+// finds a users email in the sql database and returns true or false
+function find_member_by_email($customer_em){
+  global $db;
+
+  $sql = "SELECT CustomerID FROM Customer ";
+  $sql .= "WHERE CustomerEmail='" . db_escape($db, $customer_em) . "' ";
+  $sql .= "LIMIT 1";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $customer_id = mysqli_fetch_assoc($result); // find first
+  mysqli_free_result($result);
+  return $customer_id; // returns null or customerID
+}
+
 function find_customer_by_email($em) {
   global $db;
 
@@ -26,7 +40,6 @@ function find_customer_by_email($em) {
   mysqli_free_result($result);
   return $admin; // returns an assoc. array
 }
-
 
 
 
