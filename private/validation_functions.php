@@ -1,18 +1,52 @@
 <?php
 
   // validate data presence
-  // better than empty() which considers "0" to be empty
 function is_blank($value) {
   return !isset($value) || trim($value) === '';
 }
+
+// validate correct format for email addresses
+function has_valid_email_format($value) {
+  $email_regex = '/\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\Z/i';
+  return preg_match($email_regex, $value);
+}
+
+// validate permitted password characters only
+function has_password_only_chars($value) {
+  $email_regex = '/^[a-zA-Z0-9.\/]+$/';
+  return preg_match($email_regex, $value);
+}
+
+function should_not_have_chars($value) {
+  $user_id = '/^[^.%\\\\@?\/]+$/';
+  return preg_match($user_id, $value);
+}
+
+// has_unique_username('johnqpublic')
+// * Validates uniqueness of admins.username
+// * For new records, provide only the username.
+// * For existing records, provide current ID as second argument
+//   has_unique_username('johnqpublic', 4
+function has_unique_username($username, $current_id="0") {
+  global $db;
+
+  $sql = "SELECT * FROM admins ";
+  $sql .= "WHERE username='" . db_escape($db, $username) . "' ";
+  $sql .= "AND id != '" . db_escape($db, $current_id) . "'";
+
+  $result = mysqli_query($db, $sql);
+  $admin_count = mysqli_num_rows($result);
+  mysqli_free_result($result);
+
+  return $admin_count === 0;
+}
+
+
 
 
 // ##########################################################
 // ###                REFERENCE ONLY                      ###
 // ##########################################################
-
-
-
 
   // has_presence('abcd')
   // * validate data presence
@@ -87,17 +121,6 @@ function is_blank($value) {
     return strpos($value, $required_string) !== false;
   }
 
-  // has_valid_email_format('nobody@nowhere.com')
-  // * validate correct format for email addresses
-  // * format: [chars]@[chars].[2+ letters]
-  // * preg_match is helpful, uses a regular expression
-  //    returns 1 for a match, 0 for no match
-  //    http://php.net/manual/en/function.preg-match.php
-  function has_valid_email_format($value) {
-    $email_regex = '/\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\Z/i';
-    return preg_match($email_regex, $value) === 1;
-  }
-
   // has_unique_page_menu_name('History')
   // * Validates uniqueness of pages.menu_name
   // * For new records, provide only the menu_name.
@@ -115,25 +138,6 @@ function is_blank($value) {
     mysqli_free_result($page_set);
 
     return $page_count === 0;
-  }
-
-  // has_unique_username('johnqpublic')
-  // * Validates uniqueness of admins.username
-  // * For new records, provide only the username.
-  // * For existing records, provide current ID as second argument
-  //   has_unique_username('johnqpublic', 4)
-  function has_unique_username($username, $current_id="0") {
-    global $db;
-
-    $sql = "SELECT * FROM admins ";
-    $sql .= "WHERE username='" . db_escape($db, $username) . "' ";
-    $sql .= "AND id != '" . db_escape($db, $current_id) . "'";
-
-    $result = mysqli_query($db, $sql);
-    $admin_count = mysqli_num_rows($result);
-    mysqli_free_result($result);
-
-    return $admin_count === 0;
   }
 
 ?>

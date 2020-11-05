@@ -4,62 +4,90 @@ $errors = [];
 $customer_email = '';
 $user_id = '';
 $password = '';
+$confirm_password = '';
 
 
-
-// Must not be logged in to be able to become a member.
+// Must not be logged in to be able to become a member. Redirects if loggedin
 if(is_logged_in()){
   redirect_to(url_for('/index.php'));
+
 } else {
   // Checks for post request to increase security
   if(is_post_request()) {
 
-    //STEP 1 check if email address is registered in customers datbase
+    // Sets variables for users page form inputs
+    $customer_email = $_POST['customer_email'] ?? '';
+    $user_id = $_POST['user_id'] ?? '';
+    $password = $_POST['password'] ?? '';
+    $confirm_password = $_POST['confirm_password'] ?? '';
+
+    // User Input Validations
+    // Checking for blanks and returning errors if so
+    if(is_blank($customer_email)) {
+      $errors[] = "Email address cannot be blank.";
+    } else if(!has_valid_email_format($customer_email)){
+      $errors[] = "Please enter a valid email address";
+    } 
+
+    // User Name validation checks
+    if(is_blank($user_id)) {
+      $errors[] = "User name cannot be blank.";
+    } else if(!should_not_have_chars($user_id)) {
+      $errors[] = "User name cannot contain the following symbols '/ . % \ @ ?'";
+    } 
+
+    // Password Validation checks
+    if( (is_blank($password)) || (is_blank($confirm_password)) ) {
+      $errors[] = "Either password field cannot be blank.";
+    } else if($password !== $confirm_password) {
+      $errors[] = "Passwords do not match";
+    } else if(strlen($password) <= 5) { 
+      $errors[] = "Password must be at least 6 characters long";
+    } else if(!has_password_only_chars($password)){
+      $errors[] = "Password must contain only numbers, letters or . or / and contain no spaces";
+    } 
+
+  } // End of user input validation checks
+
+    //STEP 1 check if email address is registered in customers database
+    
     //If it is check if CustomerID is listed in both members and customers databses.
     // if it is, then user is already registered and notify them. 
 
-    $member['$customer_email'] = $_POST['customer_email'] ?? '';
-    $member[''] = $_POST[''] ?? '';
-    $member[''] = $_POST[''] ?? '';
-    $member[''] = $_POST[''] ?? '';
+} // End of top of the page else statement
 
-    // Validations
-    if(is_blank($customer_email)) {
-      $errors[] = "email address cannot be blank.";
-    }
 
-    if(true){
 
-    }
+
 
     // ###################################################################
     // THIS IS THE CODE I AM UP TO AT THE MOMENT NEEDS Massive adjustments
     // ###################################################################
 
     // if there were no errors, try to login
-    if(empty($errors)) {
+   // if(empty($errors)) {
       // Using one variable ensures that msg is the same
-      $login_failure_msg = "Log in was unsuccessful.";
+   //   $login_failure_msg = "Log in was unsuccessful.";
 
-      $member = find_member_by_username($username);
-      if($member) {
+   //   $member = find_member_by_username($username);
+    //  if($member) {
 
         // if(password_verify($password, $member['HashedPassword'])) {
-          if($password === $member['HashedPassword']) {
+    //      if($password === $member['HashedPassword']) {
           // password matches
-          log_in_member($member);
-          redirect_to(url_for('/index.php'));
-        } else {
+    //      log_in_member($member);
+    //      redirect_to(url_for('/index.php'));
+    //    } else {
           // username found, but password does not match
-          $errors[] = $login_failure_msg;
-        }
-      } else {
+   //       $errors[] = $login_failure_msg;
+   //     }
+    //  } else {
         // no username found
-        $errors[] = $login_failure_msg;
-      }
-    }
-  }
-}
+   //     $errors[] = $login_failure_msg;
+   //   }
+  //  }
+ // }
+// }
 
 ?>
 
