@@ -90,7 +90,7 @@ if(is_logged_in()){
       <form action="register_new.php" method="post">
       <p class="registerText">Please enter the following fields and click the Register button below when complete:<br /><br />
       
-      <div>
+      <div class="customerSection">
         <h4 class="customerInfo">Customer Registration Information</h4>
         <div class="formSection">
           First Name:<br />
@@ -114,7 +114,7 @@ if(is_logged_in()){
       </div> <!-- end of customerInfo -->
 
       <div class="memberInfo">
-        <h4>Member Rego Infromation</h4>
+        <h4>Member Registration Information</h4>
         <div class="formSection">
           Email Address:<br />
           <input id="formEmail" type="text" name="customer_email" value="" /><br />

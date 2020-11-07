@@ -1,3 +1,5 @@
+<?php require_once('../../../private/initialise.php'); ?>
+<?php require_login()?>
 <!DOCTYPE html>
 <html lang="en"> 
 
@@ -60,6 +62,7 @@
 		<footer class="footer">
 			<p id="footer"> &copy; Copyright | About Us | Legal Info </p>
 			<button id="closePage" onclick="window.close()">Close Page</button>
+			<?php db_disconnect($db); ?>
 		</footer>
 	
 	</div>
