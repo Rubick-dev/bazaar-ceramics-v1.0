@@ -46,12 +46,16 @@ function find_member_by_ID($memid){
 function insert_member($cid, $member) {
   global $db;
 
+  // Hashed passwords through BCRYPT / Blowfish in PHP 7.0+ automatically salt
+  // at random  values - Salting is deprecated
+  $hashed_pw = password_hash($member['password'], PASSWORD_BCRYPT, ['cost' => 10]);
+
   $sql = "INSERT INTO member ";
   $sql .= "(CustomerID, UserID, HashedPassword) ";
   $sql .= "VALUES (";
   $sql .= "'" . db_escape($db, $cid) . "',";
   $sql .= "'" . db_escape($db, $member['user_id']) . "',";
-  $sql .= "'" . db_escape($db, $member['password']) . "'";
+  $sql .= "'" . db_escape($db, $hashed_pw) . "'";
   $sql .= ")";
   $result = mysqli_query($db, $sql);
   // Checking if INSERT statements returned a true/false and reporting

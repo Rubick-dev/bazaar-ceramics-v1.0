@@ -33,7 +33,7 @@ if(is_logged_in()){
           // CustomerID is found and no corrosponding memberID - enable creation of new member account
           insert_member($customer_id['CustomerID'], $member);
           echo "Registered!!";
-          redirect_to(url_for('/html/login/login.php?reg=1'));
+          redirect_to(url_for('/html/login/login.php?reg=1&req=0'));
         }
       } else {
       $errors[] = "The email address you have entered is not known to Bazaar Ceramics. If you are a new customer, please click the New Customer Registration button to signup now";

@@ -5,6 +5,7 @@ $username = '';
 $password = '';
 $has_just_registered = '';
 $isreg = htmlspecialchars($_GET["reg"]) ?? 0;
+$isreq = htmlspecialchars($_GET["req"]) ?? 0;
 
 
 if(is_logged_in()){
@@ -33,8 +34,7 @@ if(is_logged_in()){
       $member = find_member_by_username($username);
       if($member) {
 
-        // if(password_verify($password, $member['HashedPassword'])) {
-          if($password === $member['HashedPassword']) {
+        if(password_verify($password, $member['HashedPassword'])) {
           // password matches
           log_in_member($member);
           redirect_to(url_for('/index.php'));
@@ -72,9 +72,11 @@ if(is_logged_in()){
     <?php
     if($isreg) {
       echo "<div id='justReged'>Congratulations!!! You are now registered and are able to login</div>";
+    } else if($isreq) {
+      echo "<div id='justReqed'>You must be logged in to access the members page</div>";
     }
     ?> 
-      <form action="login.php?reg=0" method="post">
+      <form action="login.php?reg=0&req=0" method="post">
       <div class="formSection">
         Username:<br />
         <input type="text" name="username" value="<?php echo h($username); ?>" /><br />

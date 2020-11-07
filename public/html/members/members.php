@@ -1,4 +1,5 @@
 ﻿<?php require_once('../../../private/initialise.php'); ?>
+<?php require_login()?>
 <?php $page_title = 'Bazaar Ceramics - Members'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 <link rel="stylesheet" href="../../styles/main.css"> 
