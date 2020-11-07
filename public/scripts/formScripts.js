@@ -64,6 +64,20 @@ function submitForm(){
   // data isnt going anywhere i decided not to add it in 
 }
 
+function clearValues2(){
+  document.getElementById('formFirstName').value="";
+  document.getElementById('formLastName').value="";
+  document.getElementById('formAddress').value="";
+  document.getElementById('formPhone').value="";
+  document.getElementById('formEmail').value="";
+  document.getElementById('formUserID').value="";
+  document.getElementById('formPW').value="";
+  document.getElementById('formPW2').value="";
+  
+  result = "";
+return;
+}
+
 
 /// POPUP WINDOW OPENER AND CLOSER CONTENT
 // Global Variable

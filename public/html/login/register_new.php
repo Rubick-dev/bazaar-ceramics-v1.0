@@ -1,52 +1,76 @@
 <?php require_once('../../../private/initialise.php');
 
 $errors = [];
-$username = '';
-$password = '';
 
-// Checks for post request to increase security
-if(is_post_request()) {
+// Must not be logged in to be able to become a member. Redirects if loggedin
+if(is_logged_in()){
+  redirect_to(url_for('/index.php'));
 
-  $username = $_POST['username'] ?? ''; // Storing user inputs as variables
-  $password = $_POST['password'] ?? '';
+} else {
+  // Checks for post request to increase security
+  if(is_post_request()) {
 
-  // Validations
-  if(is_blank($username)) {
-    $errors[] = "Username cannot be blank.";
-  }
-  if(is_blank($password)) {
-    $errors[] = "Password cannot be blank.";
-  }
+    // Sets variables for member and customer table entires form inputs
+    $customer = [];
+    $member = [];
 
-  // if there were no errors, try to login
-  if(empty($errors)) {
-    // Using one variable ensures that msg is the same
-    $login_failure_msg = "Log in was unsuccessful.";
-
-    $member = find_member_by_username($username);
-    if($member) {
-
-      // if(password_verify($password, $member['HashedPassword'])) {
-        if($password === $member['HashedPassword']) {
-        // password matches
-        log_in_member($member);
-        redirect_to(url_for('/index.php'));
-      } else {
-        // username found, but password does not match
-        $errors[] = $login_failure_msg;
-      }
-    } else {
-      // no username found
-      $errors[] = $login_failure_msg;
+    $customer['first_name'] = $_POST['first_name'] ?? '';
+    $customer['last_name'] = $_POST['last_name'] ?? '';
+    $customer['address'] = $_POST['address'] ?? '';
+    $customer['phone'] = $_POST['phone'] ?? '';
+    $customer['customer_email'] = $_POST['customer_email'] ?? '';
+    
+    $member['customer_email'] = $_POST['customer_email'] ?? '';
+    $member['user_id'] = $_POST['user_id'] ?? '';
+    $member['password'] = $_POST['password'] ?? '';
+    $member['confirm_password'] = $_POST['confirm_password'] ?? '';
+    
+    // User Input Validations
+    // Checking for blanks and returning errors without breaking the code
+    
+    $merrors = validate_member($member);
+    $cerrors = validate_customer($customer);
+    if(($merrors) && ($cerrors)) {
+      $errors = array_merge($merrors, $cerrors);
+    } else if((!$merrors) && ($cerrors)) {
+      $errors = $cerrors;
+    } else if ((!$cerrors) && ($merrors)) {
+      $errors = $merrors;
     }
-  }
+    
 
-}
+    //STEP 1 check if email address is registered in customers database
+    if(empty($errors)) {
+      
+      $customer_id = find_customer_by_email($customer['customer_email']);
+      $member_id ='';
 
+      if($customer_id) {
+        $errors[] = "The email address must be unique, please try again with a different email address";
+      } else {
+
+        if(insert_new_customer($customer)) {
+          $member_id = find_customer_by_email($customer['customer_email']);
+          print $member_id['CustomerID'];
+          insert_member($member_id['CustomerID'], $member);
+          echo "Registered!!";
+          redirect_to(url_for('/html/login/login.php?reg=1'));
+        } else {
+          $errors[] = "There was an error creating your member account, please try again!";
+        }
+      }
+
+    } 
+     //End of member insert logic
+  } 
+  // End of user input validation checks      
+} 
+// End of top of the page else statement
 ?>
 
-<?php $page_title = 'BC - Login Page'; ?>
+<?php $page_title = 'BC - Customer Rego'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
+<script src="../../scripts/formScripts.js"></script>
 <link rel="stylesheet" media="all" href="<?php echo url_for('/styles/styles3.css'); ?>" />
 </head>
 
@@ -61,14 +85,63 @@ if(is_post_request()) {
     </div>
 
     <div class="loginSection">
-      <h1>Members Login</h1>
+      <h1>Customer Registration</h1>
 
-      <form action="login.php" method="post">
-      Username:<br />
-      <input type="text" name="username" value="<?php echo h($username); ?>" /><br />
-      Password:<br />
-      <input type="password" name="password" value="" /><br />
-      <input type="submit" name="submit" value="Login"  />
+      <form action="register_new.php" method="post">
+      <p class="registerText">Please enter the following fields and click the Register button below when complete:<br /><br />
+      
+      <div>
+        <h4 class="customerInfo">Customer Registration Information</h4>
+        <div class="formSection">
+          First Name:<br />
+          <input id="formFirstName" type="text" name="first_name" value="" /><br />
+        </div>
+
+        <div class="formSection">
+          Last Name:<br />
+          <input id="formLastName" type="text" name="last_name" value="" /><br />
+        </div>
+
+        <div class="formSection">
+          Address:<br />
+          <input id="formAddress" type="text" name="address" value="" /><br />
+        </div>
+
+        <div class="formSection">
+          Phone Number:<br />
+          <input id="formPhone" type="text" name="phone" value="" /><br />
+        </div>
+      </div> <!-- end of customerInfo -->
+
+      <div class="memberInfo">
+        <h4>Member Rego Infromation</h4>
+        <div class="formSection">
+          Email Address:<br />
+          <input id="formEmail" type="text" name="customer_email" value="" /><br />
+        </div>
+
+        <div class="formSection">
+          User Name:<br />
+          <input id="formUserID" type="text" name="user_id" value="" /><br />
+        </div>
+
+        <div class="formSection">
+          Password:<br />
+          <input id="formPW" type="password" name="password" value="" /><br />
+        </div>
+
+        <div class="formSection">
+          Confirm Password:<br />
+          <input id="formPW2" type="password" name="confirm_password" value="" /><br />
+        </div>
+      </div> <!-- end of memberInfo -->
+
+      <div class="formSection">
+        <input id="regobtn" class="btn" type="submit" name="submit" value="Register"  />
+        <br><br>
+        <button class="btn" id="clrBtn" onclick="clearValues2(); return false">Clear</button>
+      </div>
+
       </form>
       <?php echo display_errors($errors); ?>
       <br><br>
@@ -78,21 +151,16 @@ if(is_post_request()) {
 <!-- Navigation to register -->
     <div class="otherOptions">
       <div class="buttons">
-        <form action="newCustomer">
-          <p>Existing Customer Membership Sign-up:</p>
-          <input type="button" name="submit" value="Sign up now!"  />
-        </form>
-        <br>
-        <form action="existingCustomer">
-          <p>New Customer Member Sign-up</p>
-          <input type="button" name="submit" value="Sign up now!"  />
-        </form>
-        <br>
+        <p class="registerText">Already a registered customer? Click here to create an online member accout:</p>
+        <a href="<?php echo url_for('/html/login/register_exist.php'); ?>">
+          <input class="btn" type="button" class="" value="Existing Customer"  /> 
+        </a>   
+        <br><br>
         <form action="<?php echo url_for('/html/login/logout.php'); ?>">
-          <input type="submit" name="submit" value="Logout" class="cancelButton" />
+          <input type="submit" name="submit" value="Cancel Registration" class="cancelButton" />
         </form>
-
-    </div>
+      </div><!-- end of buttons div -->
+    </div> <!-- end of otherOptions div -->
 
   </div> <!-- end of page container section -->
 

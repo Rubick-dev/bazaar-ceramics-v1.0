@@ -100,3 +100,9 @@ body {
   background-color: var(--pastelBluey);
   border: 2px solid var(--pastelPink);
 }
+
+#clrBtn {
+  background-color: var(--pastelBluey);
+  border: 2px solid var(--pastelPink);
+  height: 30px;
+}

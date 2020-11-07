@@ -6,6 +6,7 @@ $password = '';
 $has_just_registered = '';
 $isreg = htmlspecialchars($_GET["reg"]) ?? 0;
 
+
 if(is_logged_in()){
   redirect_to(url_for('/index.php'));
 
@@ -73,7 +74,7 @@ if(is_logged_in()){
       echo "<div id='justReged'>Congratulations!!! You are now registered and are able to login</div>";
     }
     ?> 
-      <form action="login.php" method="post">
+      <form action="login.php?reg=0" method="post">
       <div class="formSection">
         Username:<br />
         <input type="text" name="username" value="<?php echo h($username); ?>" /><br />

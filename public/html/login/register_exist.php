@@ -1,11 +1,7 @@
 <?php require_once('../../../private/initialise.php');
 
 $errors = [];
-$customer_email = '';
-$user_id = '';
-$password = '';
-$confirm_password = '';
-
+$member = [];
 
 // Must not be logged in to be able to become a member. Redirects if loggedin
 if(is_logged_in()){
@@ -15,52 +11,28 @@ if(is_logged_in()){
   // Checks for post request to increase security
   if(is_post_request()) {
 
-    // Sets variables for users page form inputs
-    $customer_email = $_POST['customer_email'] ?? '';
-    $user_id = $_POST['user_id'] ?? '';
-    $password = $_POST['password'] ?? '';
-    $confirm_password = $_POST['confirm_password'] ?? '';
+    // Sets variables for users input on registration form
+    $member['customer_email'] = $_POST['customer_email'] ?? '';
+    $member['user_id'] = $_POST['user_id'] ?? '';
+    $member['password'] = $_POST['password'] ?? '';
+    $member['confirm_password'] = $_POST['confirm_password'] ?? '';
 
-    // User Input Validations
-    // Checking for blanks and returning errors if so
-    if(is_blank($customer_email)) {
-      $errors[] = "Email address cannot be blank.";
-    } else if(!has_valid_email_format($customer_email)){
-      $errors[] = "Please enter a valid email address";
-    } 
-
-    // User Name validation checks
-    if(is_blank($user_id)) {
-      $errors[] = "User name cannot be blank.";
-    } else if(!should_not_have_chars($user_id)) {
-      $errors[] = "User name cannot contain the following symbols '/ . % \ @ ?'";
-    } 
-
-    // Password Validation checks
-    if( (is_blank($password)) || (is_blank($confirm_password)) ) {
-      $errors[] = "Either password field cannot be blank.";
-    } else if($password !== $confirm_password) {
-      $errors[] = "Passwords do not match";
-    } else if(strlen($password) <= 5) { 
-      $errors[] = "Password must be at least 6 characters long";
-    } else if(!has_password_only_chars($password)){
-      $errors[] = "Password must contain only numbers, letters or . or / and contain no spaces";
-    } 
-      
-    //STEP 1 check if email address is registered in customers database
+    $errors = validate_member($member);
+    // If validations pass this logic will run   
     if(empty($errors)) {
-
+      
+      //STEP 1 check if email address is registered in customers database
       $customer_id = '';
-      $member_id ='';
-      $customer_id = find_customer_by_email($customer_email);
+      $member_id = '';
+      $customer_id = find_customer_by_email($member['customer_email']);
       $member_id = find_member_by_ID($customer_id['CustomerID']);      
       if($customer_id) {
         if($member_id) {
           $errors[] = "You already are a member, contact Bazaar Ceramics support if you cannot access your account";
         } else {
           // CustomerID is found and no corrosponding memberID - enable creation of new member account
-          insert_member($customer_id['CustomerID'], $user_id, $password);
-          echo "Registered";
+          insert_member($customer_id['CustomerID'], $member);
+          echo "Registered!!";
           redirect_to(url_for('/html/login/login.php?reg=1'));
         }
       } else {
