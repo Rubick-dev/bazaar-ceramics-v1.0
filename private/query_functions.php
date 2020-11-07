@@ -15,7 +15,7 @@ function find_member_by_username($username) {
 }
 
 // finds a users email in the sql database and returns true or false
-function find_member_by_email($customer_em){
+function find_customer_by_email($customer_em){
   global $db;
 
   $sql = "SELECT CustomerID FROM Customer ";
@@ -28,7 +28,50 @@ function find_member_by_email($customer_em){
   return $customer_id; // returns null or customerID
 }
 
-function find_customer_by_email($em) {
+// finds a users email in the sql database and returns true or false
+function find_member_by_ID($memid){
+  global $db;
+
+  $sql = "SELECT CustomerID FROM member ";
+  $sql .= "WHERE CustomerID='" . db_escape($db, $memid) . "' ";
+  $sql .= "LIMIT 1";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $member_id = mysqli_fetch_assoc($result); // find first
+  mysqli_free_result($result);
+  return $member_id; // returns null or memberID
+}
+
+//Inserts data into members database only.
+function insert_member($cid, $uid, $pw) {
+  global $db;
+
+  $sql = "INSERT INTO member ";
+  $sql .= "(CustomerID, UserID, HashedPassword) ";
+  $sql .= "VALUES (";
+  $sql .= "'" . db_escape($db, $cid) . "',";
+  $sql .= "'" . db_escape($db, $uid) . "',";
+  $sql .= "'" . db_escape($db, $pw) . "'";
+  $sql .= ")";
+  $result = mysqli_query($db, $sql);
+  // For INSERT statements, $result is true/false
+  if($result) {
+    return true;
+  } else {
+    // INSERT failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
+}
+
+
+
+// ### EVERYTHING BELOW HERE IS FOR REFERENCE ###
+  // Subjects
+
+  
+function find_customer2_by_email($em) {
   global $db;
 
   $sql = "SELECT * FROM customer ";
@@ -42,10 +85,6 @@ function find_customer_by_email($em) {
 }
 
 
-
-
-// ### EVERYTHING BELOW HERE IS FOR REFERENCE ###
-  // Subjects
 
   function find_all_subjects($options=[]) {
     global $db;

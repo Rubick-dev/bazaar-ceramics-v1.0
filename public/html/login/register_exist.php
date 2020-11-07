@@ -50,22 +50,25 @@ if(is_logged_in()){
     //STEP 1 check if email address is registered in customers database
     if(empty($errors)) {
 
-      $does_customer_exist = find_member_by_email($customer_email);
-            
-      if($does_customer_exist) {
-        $errors[] = "Did detect"; //To be removed
+      $customer_id = '';
+      $member_id ='';
+      $customer_id = find_customer_by_email($customer_email);
+      $member_id = find_member_by_ID($customer_id['CustomerID']);      
+      if($customer_id) {
+        if($member_id) {
+          $errors[] = "You already are a member, contact Bazaar Ceramics support if you cannot access your account";
+        } else {
+          // CustomerID is found and no corrosponding memberID - enable creation of new member account
+          insert_member($customer_id['CustomerID'], $user_id, $password);
+          echo "Registered";
+          redirect_to(url_for('/html/login/login.php?reg=1'));
+        }
       } else {
-      $errors[] = "The email address you entered is not currently registerd under a current customer. Click the New Customer Registration button to signup now";
+      $errors[] = "The email address you have entered is not known to Bazaar Ceramics. If you are a new customer, please click the New Customer Registration button to signup now";
       }
-    }
+    } //End of member insert logic
   } // End of user input validation checks      
 } // End of top of the page else statement
-
-
-    // #######################################################################
-    // # THIS IS THE CODE I AM UP TO AT THE MOMENT NEEDS Massive adjustments #
-    // #######################################################################
-
 
 ?>
 
@@ -89,15 +92,25 @@ if(is_logged_in()){
 
       <form action="register_exist.php" method="post">
       <p class="registerText">Please enter the following fields and click the Register button when complete:<br /><br />
-      Email Address:<br />
-      <input type="text" name="customer_email" value="" /><br />
-      User Name:<br />
-      <input type="text" name="user_id" value="" /><br />
-      Password:<br />
-      <input type="password" name="password" value="" /><br />
-      Confirm Password:<br />
-      <input type="password" name="confirm_password" value="" /><br />
-      <input type="submit" name="submit" value="Register"  />
+      <div class="formSection">
+        Email Address:<br />
+        <input type="text" name="customer_email" value="" /><br />
+      </div>
+      <div class="formSection">
+        User Name:<br />
+        <input type="text" name="user_id" value="" /><br />
+      </div>
+      <div class="formSection">
+        Password:<br />
+        <input type="password" name="password" value="" /><br />
+      </div>
+      <div class="formSection">
+        Confirm Password:<br />
+        <input type="password" name="confirm_password" value="" /><br />
+      </div>
+      <div class="formSection">
+        <input id="regobtn" class="btn" type="submit" name="submit" value="Register"  />
+      </div>
       </form>
       <?php echo display_errors($errors); ?>
       <br><br>
@@ -109,7 +122,7 @@ if(is_logged_in()){
       <div class="buttons">
         <p class="registerText">Not a registered customer? Click here to register.</p>
         <a href="<?php echo url_for('/html/login/register_new.php'); ?>">
-          <input type="button" class="" value="New Customer Registration"  /> 
+          <input class="btn" type="button" class="" value="New Customer Rego"  /> 
         </a>   
         <br><br>
         <form action="<?php echo url_for('/html/login/logout.php'); ?>">

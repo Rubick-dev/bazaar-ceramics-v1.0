@@ -3,6 +3,8 @@
 $errors = [];
 $username = '';
 $password = '';
+$has_just_registered = '';
+$isreg = htmlspecialchars($_GET["reg"]) ?? 0;
 
 if(is_logged_in()){
   redirect_to(url_for('/index.php'));
@@ -66,13 +68,23 @@ if(is_logged_in()){
 
     <div class="loginSection">
       <h1>Members Login</h1>
-
+    <?php
+    if($isreg) {
+      echo "<div id='justReged'>Congratulations!!! You are now registered and are able to login</div>";
+    }
+    ?> 
       <form action="login.php" method="post">
-      Username:<br />
-      <input type="text" name="username" value="<?php echo h($username); ?>" /><br />
-      Password:<br />
-      <input type="password" name="password" value="" /><br />
-      <input type="submit" name="submit" value="Login"  />
+      <div class="formSection">
+        Username:<br />
+        <input type="text" name="username" value="<?php echo h($username); ?>" /><br />
+      </div>
+      <div class="formSection">
+        Password:<br />
+        <input type="password" name="password" value="" /><br />
+      </div>
+      <div>  
+        <input class="btn" id="loginbtn" type="submit" name="submit" value="Login"  />
+      </div>
       </form>
       <?php echo display_errors($errors); ?>
       <br><br>
@@ -84,10 +96,10 @@ if(is_logged_in()){
       <div class="buttons">
         <p class="registerText">Not a member yet? Register now as a New or Existing Customer:</p>
         <a href="<?php echo url_for('/html/login/register_new.php'); ?>">
-          <input type="button" class="" Value="New Customer" />
+          <input class="btn" type="button" value="New Customer" />
         </a>
         <a href="<?php echo url_for('/html/login/register_exist.php'); ?>">
-          <input type="button" class="" value="Existing Customer"  /> 
+          <input class="btn" type="button" value="Existing Customer"  /> 
         </a>   
         <br><br>
         <div>
@@ -99,5 +111,5 @@ if(is_logged_in()){
     </div> <!-- end of otherOptions Div -->
 
   </div> <!-- end of page container section -->
-
+<?php $has_just_registered = false ?>
 <?php include(SHARED_PATH . '/login_footer.php'); ?>

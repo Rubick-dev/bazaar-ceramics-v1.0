@@ -33,17 +33,6 @@ body {
   padding-top: 20px;
 }
 
-.buttons {
-  text-align: center;
-}
-
-.cancelButton {
-  background-color: var(--pastelDarkBlue);
-  border-radius: 10%;
-  border: 1px solid red;
-  padding: 10px;
-}
-
 .otherOptions {
   padding-bottom: 20px;
 }
@@ -68,4 +57,46 @@ body {
 
 .buttons a {
   padding: 10px;
+}
+
+#justReged {
+  padding: 15px;
+  background-color: var(--pastelDarkBlue);
+  margin: 5% 10% 5% 10%;
+}
+
+.formSection {
+  margin: 3%;
+}
+
+.btn {
+  margin-top: 15px;
+  width: 150px;
+  height: 50px;
+  background-color: var(--pastelLightBlue);
+  border-radius: 10%;
+  cursor: pointer; 
+}
+
+.buttons {
+  text-align: center;
+}
+
+.cancelButton {
+  background-color: var(--pastelPink);
+  border-radius: 10%;
+  border: 1px solid red;
+  padding: 10px;
+  width: 50%;
+  cursor: pointer;
+}
+
+#regobtn {
+  background-color: var(--pastelDarkBlue);
+  cursor: pointer;
+}
+
+#loginbtn {
+  background-color: var(--pastelBluey);
+  border: 2px solid var(--pastelPink);
 }

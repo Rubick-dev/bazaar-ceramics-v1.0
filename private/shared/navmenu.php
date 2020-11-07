@@ -53,9 +53,15 @@
         <a class="loginMenu" href="#">Account</a>
         <input type="checkbox" id="drop-3">
         <ul>
-          <li><a class="tier2 accountLoginMenu" href="<?php echo url_for('/html/login/login.php'); ?>">Login</a></li>
-          <li><a class="tier2 accountLogoutMenu" href="<?php echo url_for('/html/login/logout.php'); ?>">Logout</a></li>
-          <li><a class="tier2 accountRegisterMenu" href="<?php echo url_for('/html/login/register_exist.php'); ?>">Register</a></li>
+        <?php 
+    if(is_logged_in()){
+      echo "<li><a class='tier2 accountLogoutMenu' href='"?><?php echo url_for('/html/login/logout.php'); ?><?php echo "'>Logout</a></li>";
+    } else {
+      echo "<li><a class='tier2 accountLoginMenu' href='" ?><?php echo url_for('/html/login/login.php?reg=0'); ?><?php echo "'>Login</a></li>";
+      echo "<li><a class='tier2 accountRegisterMenu' href='"?><?php echo url_for('/html/login/register_exist.php'); ?><?php echo "'>Register</a></li>";
+    }
+  ?>
+          
         </ul>
       </li>
 
