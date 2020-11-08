@@ -54,7 +54,7 @@ if(is_logged_in()){
           print $member_id['CustomerID'];
           insert_member($member_id['CustomerID'], $member);
           echo "Registered!!";
-          redirect_to(url_for('/html/login/login.php?reg=1'));
+          redirect_to(url_for('/html/login/login.php?reg=1&req=0'));
         } else {
           $errors[] = "There was an error creating your member account, please try again!";
         }
