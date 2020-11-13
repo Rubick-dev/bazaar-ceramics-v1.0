@@ -20,6 +20,7 @@ body {
   font-weight: 700;
   word-wrap: break-word !important;
   max-width: 1200px;
+  min-width: 320px;
 }
 
 .container {
@@ -170,6 +171,8 @@ li>a:only-child:after {
   text-align: center;
   border: 1px solid var(--pastelGrey);
   margin: 0;
+  border-left-color: var(--pastelDarkBlue);
+  border-right-color: var(--pastelDarkBlue);
 }
 
 
@@ -313,12 +316,51 @@ figcaption {
   width: auto;
 } 
 
+
+/* #### Banner Section styling #### */
 .banner {
   width: 100%;
-  height: auto;
-  padding: 5px;
+  padding-top: 2px;  
+  margin: 0;
+  max-height: 250px;
 }
 
+.bannerImgDiv {
+  width: 80%;
+}
+
+.bannerImg {
+  margin-right: 5px;
+  width: 100%;
+  height: 240px;
+}
+
+.shopCartDiv {
+  min-width: 19%;
+  cursor: pointer; 
+  position: relative;
+  display: inline-block;
+}
+
+.shopCartIconImg {
+  width: 100%;
+  height: 240px;
+  margin-left: 5px;
+}
+
+.cartItemTotal {
+  position: absolute;
+  z-index: 999;
+  margin: 0 auto;
+  left: 25px;
+  right: 0;        
+  text-align: center;
+  top: 33%;
+  background: rgba(0, 0, 0, 0.8);
+  font-family: Arial,sans-serif;
+  color: #fff;
+  width: 40%; /* Set the width of the positioned div */
+}
 
 /* ### Productions Page Specific ### */
 .container4 {
@@ -422,7 +464,6 @@ figcaption {
 }
 
 
-
 /* ### Flexbox used to layout Company Background page ### */
 .container2 {
   display: flex;
@@ -464,6 +505,41 @@ figcaption {
   body {
     font-size: 10px;
   }
+
+  /* #### Banner Section Styling #### */
+  .banner {
+   padding: 5px 0 0 0;
+  
+  }
+  
+  .bannerImgDiv {
+    width: 80%;
+  }
+
+  .bannerImg {
+    height: 100px;
+    width: 100%;
+  }
+  
+  .shopCartIconImg {
+    height: 100px;
+    margin-left: 3px;
+  }
+
+  .shopCartDiv {
+    min-width: 19%;
+    cursor: pointer; 
+    position: relative;
+    display: inline-block;
+  }
+  
+.cartItemTotal {
+  left: 25px;
+  right: 0;        
+  text-align: center;
+  top: 25%;
+  width: 35%;
+} 
 
   /* ### Nav Menu ### */
   .titleW {
@@ -784,6 +860,26 @@ figcaption {
     background:var(--pastelGrey);
   }
   
+    /* #### Banner Section Styling #### */
+   .banner {
+    padding: 5px 0 0 0;
+   
+   }
+   
+   .bannerImg {
+     height: 120px;
+     width: 100%;
+   }
+   
+   .shopCartIconImg {
+      height: 120px;
+      margin-left: 6px;
+   }
+   
+   .cartItemTotal {
+     top: 29%;
+ 
+   } 
 
   /* ### Nav Menu ### */
     .titleW {

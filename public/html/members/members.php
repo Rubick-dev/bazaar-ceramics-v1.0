@@ -1,5 +1,5 @@
 ﻿<?php require_once('../../../private/initialise.php'); ?>
-<?php require_login()?>
+<?php require_login(); ?>
 <?php $page_title = 'Bazaar Ceramics - Members'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 <link rel="stylesheet" href="../../styles/main.css"> 
@@ -11,8 +11,18 @@
 <!-- ### Members Page Content Area Top Section ### -->
 <div class="container3">
 			
-	<div>
-		<img class="banner" src="../../images/members/banner.jpg" alt="Banner of Bazaar Ceramics">
+	<div class="banner">
+		<div class="bannerImgDiv"> 
+			<img class="bannerImg" src="../../images/members/banner.jpg" alt="Banner of Bazaar Ceramics">
+		</div>
+
+		<div class="shopCartDiv">
+			<a href="<?php echo url_for('/html/members/cart.php'); ?>" class="shopCartIconAnchor">
+				<img class="shopCartIconImg" src="../../images/members/shopCartIcon.jpg" alt="The Shopping Cart Icon">
+			</a>
+			<div class="cartItemTotal">0</div>
+		</div>
+
 	</div> <!-- ###    End of Banner Div    ### -->
 
 	<div class="pageHeading">
