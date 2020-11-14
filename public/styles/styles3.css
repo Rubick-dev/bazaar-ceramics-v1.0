@@ -16,14 +16,24 @@ body {
 
 #container {
   width: 40%;
-  min-width: 300px;
+  min-width: 320px;
   padding-top: 5px;
   margin: 10px auto 0;
   border: 2px solid black;
   background: var(--pastelGrey);
 }
 
-.loginSection {
+#container4 {
+  width: 80%;
+  min-width: 801px;
+  padding-top: 5px;
+  margin: 10px auto 0;
+  border: 2px solid black;
+  background: var(--pastelGrey);
+}
+
+.loginSection,
+.cartSection {
   text-align: center;
 }
 
@@ -115,4 +125,22 @@ body {
   background-color: var(--pastelBluey);
   border: 2px solid var(--pastelPink);
   height: 30px;
+}
+
+/* ### Cart item list styling ### */
+#cartDiv {
+  margin: auto;
+  align-content: center;
+}
+
+#cartTableHeaderRow {
+  border: 1px solid var(--pastelPink);
+  width: 90%;
+  align-items: center;
+  margin: auto;
+}
+
+#cartTableHeaderRow th {
+  border: 1px solid var(--pastelPink);
+  margin: 0;
 }
