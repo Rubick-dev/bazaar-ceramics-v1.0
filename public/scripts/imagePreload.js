@@ -48,13 +48,9 @@ placeholder information with the query string data corosponding with the user se
  function bodyInfoUpdate(){
   document.getElementById("itemsName").innerHTML = itemName;
   document.getElementById("itemsName2").innerHTML = "Order Item - " + itemName;
-  
   document.getElementById("descInsert").innerHTML = descFiller;
   console.log(descFiller);
-  // document.getElementById("iDesc").value = itemDesc; - removed to enable innerHTML insertion
-
   document.getElementById("priceInsert").innerHTML = priceFiller;
-   // document.getElementById("price").value = itemPrice; - removed to enable innerHTML insertion
   return;
 }
 

@@ -877,8 +877,10 @@ figcaption {
    }
    
    .cartItemTotal {
-     top: 29%;
- 
+     left: 25px;
+     right: 0;        
+     text-align: center;
+     top: 29%; 
    } 
 
   /* ### Nav Menu ### */

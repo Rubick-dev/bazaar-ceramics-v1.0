@@ -55,7 +55,7 @@
         <ul>
         <?php 
     if(is_logged_in()){
-      echo "<li><a class='tier2 accountLogoutMenu' href='"?><?php echo url_for('/html/login/logout.php'); ?><?php echo "'>Logout</a></li>";
+      echo "<li><a class='tier2 accountLogoutMenu' href='"?><?php echo url_for('/html/login/logout.php'); ?><?php echo "'>Logout</a></li>"; 
     } else {
       echo "<li><a class='tier2 accountLoginMenu' href='" ?><?php echo url_for('/html/login/login.php?reg=0&req=0'); ?><?php echo "'>Login</a></li>";
       echo "<li><a class='tier2 accountRegisterMenu' href='"?><?php echo url_for('/html/login/register_exist.php'); ?><?php echo "'>Register</a></li>";

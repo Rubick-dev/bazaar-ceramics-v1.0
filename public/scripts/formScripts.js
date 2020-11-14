@@ -10,22 +10,15 @@ function sum(){
   // Conducting the validity of the quantity value entered by the user and notifying if errors
   if(val1 < 1 || val1===null || isNaN(val1)){
     alert("Please ensure you enter a numeric value greater than zero into the quantity field");
+    return 0;
   }
 
-  // Checks the validity of price, if it is invlaid, it resets price back to initial and performs
-  // the calculation. ### This can no longer fail as the price field has become readonly ###
-  else if(val2 < 1 || val2===null || isNaN(val2)){
-    val2 = parseInt(itemPrice);
+  // if Quantinity is an appropriate value, perform calc and inserts the result
+  else {
     let result = parseFloat(val1)*parseFloat(val2);
     document.getElementById('totalPrice').value=result;
   }
-
-  // if varibables are appropriate values, performs the calc and inserts the result
-  else{
-    let result = parseFloat(val1)*parseFloat(val2);
-    document.getElementById('totalPrice').value=result;
-  }
-  return;
+  return 1;
 }
 
 // function to clear the values in the quantity and total price columns
@@ -39,29 +32,34 @@ return;
 // Function to provide a confirm box and information list on pressing the submit button
 function submitForm(){
 
-  // Builds the message from the user data for the confirm dialog box message.
-  let message = "You are about to order the following items\n\n ";
-  message += "Name: " + itemName + "\n ";
-  message += "Item Description: ";
-  message += document.getElementById("iDesc").value + "\n ";
-  message += "Quantity: ";
-  message += document.getElementById("quantity").value + "\n ";
-  message += "Unit Price: ";
-  message += document.getElementById("price").value + "\n ";
-  message += "Total Price: ";
-  message += document.getElementById("totalPrice").value + "\n\n ";
-  message += "Is this corrrect?";
+  if(!sum()) {
+    alert("We got here"); //Temp until complete
+  } else {
 
-  // Displays the confirmation message upon user click and sets a boolean variable 
-  // or the user reaction
-  let conf = confirm(message);
+    // Builds the message from the user data for the confirm dialog box message.
+    let message = "You are about to order the following items\n\n ";
+    message += "Name: " + itemName + "\n ";
+    message += "Item Description: ";
+    message += document.getElementById("iDesc").value + "\n ";
+    message += "Quantity: ";
+    message += document.getElementById("quantity").value + "\n ";
+    message += "Unit Price: ";
+    message += document.getElementById("price").value + "\n ";
+    message += "Total Price: ";
+    message += document.getElementById("totalPrice").value + "\n\n ";
+    message += "Is this corrrect?";
 
-  // Clears the form data if the cancel button is pressed
-  if (conf===false){
-    clearValues() 
+    // Displays the confirmation message upon user click and sets a boolean variable 
+    // or the user reaction
+    let conf = confirm(message);
+
+    // Clears the form data if the cancel button is pressed
+    if (conf===false){
+      clearValues() 
+    }
+    //I would make an else statement invoking the Sumbit method here however since the
+    // data isnt going anywhere i decided not to add it in 
   }
-  //I would make an else statement invoking the Sumbit method here however since the
-  // data isnt going anywhere i decided not to add it in 
 }
 
 function clearValues2(){

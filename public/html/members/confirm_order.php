@@ -3,7 +3,6 @@
 
 <?php
 $errors = [];
-$total = "30"
 // $cartItemSet = find_cart_items();
 
 // if(!cartItemSet) {
@@ -13,7 +12,7 @@ $total = "30"
 // } 
 ?>
 
-<?php $page_title = 'BC - Shopping Cart'; ?>
+<?php $page_title = 'BC - Shopping Cart Confirmation'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 <link rel="stylesheet" media="all" href="<?php echo url_for('/styles/styles3.css'); ?>" />
 </head>
@@ -28,7 +27,11 @@ $total = "30"
     </div>
 
     <div class="cartSection">
-      <h1><?php echo get_user_welcome_message() . "'s Shopping Cart" ?></h1>
+      <h1><?php echo get_user_welcome_message() . "'s Order Confirmation" ?></h1>
+
+      <div>
+        <p>You are about to order the following products:</p>
+      </div>
 
       <div id="cartDiv">
         <table id="cartTableHeaderRow">
@@ -38,8 +41,8 @@ $total = "30"
             <th id="td3" class="tableHeading">Quantity</th>
             <th id="td4" class="tableHeading">Unit Price</th>
             <th id="td5" class="tableHeading">Total Price</th>
-            <th id="td6" class="tableHeading">Cancel Item</th>
           </tr>
+
         <!-- THIS IS WHERE THE TABLE IS FILLED OUT THROUGH ORDERS TABLE CONTENT -->
 
           <tr>
@@ -48,7 +51,6 @@ $total = "30"
             <td>1</td>
             <td>450</td>
             <td>450</td>
-            <td><img src=<?php echo url_for('/images/members/cancel_order.png'); ?> class="cancelImg"></img></td>
           </tr>
         
           <tr>
@@ -57,32 +59,43 @@ $total = "30"
             <td class="tableHeading">2</td>
             <td class="tableHeading">300</td>
             <td class="tableHeading">600</td>
-            <td><img src=<?php echo url_for('/images/members/cancel_order.png'); ?> class="cancelImg"></img></td>
-          </tr>
+           </tr>
+
         </table>
       </div> <!-- End of table of cart items  -->
-      
+
     </div> <!-- End of CartDiv above <table> items  -->
-    <div id="totalPriceDiv">
-      <p>Total Order Price:   <?php echo "$" . $total ?></p> 
-    </div>
-     
-    <div id="cartActions">
+    
+    <div id="customerInfo">
+
+      <div>
+        <p>Order Details: </p>
+        <p>Customer name: <?php echo " INSERTNAME" ?></p>
+        <p>Customer Address: <?php echo " INSERTADDRESS" ?></p>
+        <p>Date of Order: <?php echo " INSERTDATE" ?></p>
+        <p>Total: <?php echo " INSERTTTOTALPRICE" ?></p>
+      </div>
       
+    </div> <!-- End of customer Info div -->
+
+
+
+    <div id="confirmButtonsDiv">
+
       <a href="<?php echo url_for('/html/members/members.php'); ?>">
-        <input class="btn" type="button" value="Return to Members" />
+        <input class="btn" type="button" value="Keep Shopping" />
       </a>
 
-      <a href="<?php echo url_for('/html/members/clear_orders.php'); ?>">
-        <input class="btn cancelButton" type="button" name="deleteCart" value="Remove ALL Items from Cart" />
+      <a href="<?php echo url_for('/html/members/cart.php'); ?>">
+        <input class="btn cancelButton" type="button" name="deleteCart" value="Return to Cart" />
       </a> 
             
       <a href="<?php echo url_for('/html/members/confirm_order.php'); ?> ">
-        <input class="btn" id="orderBtn" type="button" name="orderItems" value="ORDER ITEMS" />
+        <input class="btn" id="orderBtn" type="button" name="orderItems" value="PAY NOW" />
       </a>
 
-    </div><!-- end of cart actions div -->
-
+    </div> <!-- end of cartButtonsDiv -->
+   
   </div> <!-- end of page container section -->
 
 <?php include(SHARED_PATH . '/login_footer.php'); ?>
