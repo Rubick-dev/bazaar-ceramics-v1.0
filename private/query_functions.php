@@ -94,4 +94,58 @@ function insert_new_customer($customer) {
     exit;
   }
 }
+
+// Checking to see if the product exists in the database.
+function find_product_by_name($product_name){
+  global $db;
+
+  $sql = "SELECT ProductID FROM product ";
+  $sql .= "WHERE ProductID='" . db_escape($db, $product_name) . "' ";
+  $sql .= "LIMIT 1";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $product_id = mysqli_fetch_assoc($result); // find first
+  mysqli_free_result($result);
+  // print_r($product_id);
+  return $product_id; // returns null or productID
+}
+
+// Checking to see if product exists in orderline
+function product_exists_in_orderline($prodID){
+  global $db;
+
+  $sql = "SELECT ProductID FROM OrderLine ";
+  $sql .= "WHERE ProductID='" . db_escape($db, $prodID) . "' ";
+  $sql .= "LIMIT 1";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $product_id = mysqli_fetch_assoc($result); // find first
+  mysqli_free_result($result);
+  // print_r($product_id);
+  return $product_id; // returns null or productID
+}
+
+//Inserts memeber data into members database.
+function insert_new_order($new_order) {
+  global $db;
+ 
+  $sql = "INSERT INTO orders ";
+  $sql .= "(CustomerID, OrderDate) ";
+  $sql .= "VALUES (";
+  $sql .= "'" . db_escape($db, $new_order) . "',";
+  $sql .= " curdate()";
+  $sql .= ")";
+  $result = mysqli_query($db, $sql);
+  // Checking if INSERT statements returned a true/false and reporting
+  if($result) {
+    return true;
+  } else {
+    // INSERT failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
+}
+
+
 ?>

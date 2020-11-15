@@ -29,36 +29,16 @@ function clearValues(){
 return;
 }
 
-// Function to provide a confirm box and information list on pressing the submit button
+// Function to run checks and add an order to the orders table upon
+// pressing the submit button
 function submitForm(){
 
   if(!sum()) {
-    alert("We got here"); //Temp until complete
+    document.getElementById('form').setAttribute('method', 'get');
+    return false;
   } else {
-
-    // Builds the message from the user data for the confirm dialog box message.
-    let message = "You are about to order the following items\n\n ";
-    message += "Name: " + itemName + "\n ";
-    message += "Item Description: ";
-    message += document.getElementById("iDesc").value + "\n ";
-    message += "Quantity: ";
-    message += document.getElementById("quantity").value + "\n ";
-    message += "Unit Price: ";
-    message += document.getElementById("price").value + "\n ";
-    message += "Total Price: ";
-    message += document.getElementById("totalPrice").value + "\n\n ";
-    message += "Is this corrrect?";
-
-    // Displays the confirmation message upon user click and sets a boolean variable 
-    // or the user reaction
-    let conf = confirm(message);
-
-    // Clears the form data if the cancel button is pressed
-    if (conf===false){
-      clearValues() 
-    }
-    //I would make an else statement invoking the Sumbit method here however since the
-    // data isnt going anywhere i decided not to add it in 
+    document.getElementById('form').setAttribute('action', 'members_orders.php');
+    return;     
   }
 }
 

@@ -28,7 +28,7 @@ function only_has_nums($value) {
   if(ctype_digit($value)) {
     return 1; 
   } else {
-  return 0;
+    return 0;
   }
 }
 
@@ -61,7 +61,6 @@ function validate_member($member) {
     } else if(!has_password_only_chars($member['password'])){
       $errors[] = "Password must contain only numbers, letters or . or / and contain no spaces";
     } 
-
   return $errors;
 }
 
@@ -88,6 +87,11 @@ function validate_customer($customer) {
     } else if(!only_has_nums($customer['phone'])) {
     $errors[] = "Phone numbers can only take numbers with no spaces.";
     }
-
     return $errors;
   }
+
+
+  function add_item_to_cart(){
+
+  }
+  ?>

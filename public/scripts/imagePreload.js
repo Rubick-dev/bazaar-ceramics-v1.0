@@ -6,6 +6,7 @@ const itemPrice = urlParams.get("price");
 const itemDesc = urlParams.get("description");
 const itemName = urlParams.get("name");
 const fileName = urlParams.get("slice");
+let realFileName = getRealName(fileName);
 
 
 /* Building up the values for inserting innerHTML into the Price and Desc sections */
@@ -14,13 +15,15 @@ let priceFiller = `	<label for="price">Price:</label>
 
 let descFiller = `<label for="itemDescription">Item Description</label>
 							<input type="text" name="itemDescription" id="iDesc" value="${itemDesc}" size="40" readonly>`
-						
+
+let hiddenStuff = `<input type="hidden" name="prodId" id="productId5" value="${realFileName}" >`
 
 /* Setting global variables*/
 let dispImg = "";
-let dirName = "../../images/slicedimages/"
+let dirName = "../../images/slicedimages/";
 let row = 0;
 let col = 0;
+
 
 
 /* Building the Array of image objects - This Script tag is prior to the Body and
@@ -45,15 +48,34 @@ for(let row = 0; row < 4; row++){
 
  /* Function executes on members_orders page onload event in the body. This replaces the
 placeholder information with the query string data corosponding with the user selection */
- function bodyInfoUpdate(){
+ function bodyInfoUpdate(){  
   document.getElementById("itemsName").innerHTML = itemName;
   document.getElementById("itemsName2").innerHTML = "Order Item - " + itemName;
   document.getElementById("descInsert").innerHTML = descFiller;
   console.log(descFiller);
   document.getElementById("priceInsert").innerHTML = priceFiller;
+  document.getElementById('productId5').innerHTML = hiddenStuff;
   return;
 }
 
+  // Converts the wrong product name to the right name to allow PHP form processing!
+  // THIS LOGIC SHOULD NOT HAVE BEEN NEEDED!! TAFE error!!!
+  function getRealName(oldname){
+    if (oldname === 'bcpot002') {
+      return 'bcpot020';
+    } else if (oldname === 'bcpot003') {
+      return 'bcpot030';
+    } else if (oldname === 'bcpot006') {
+      return 'bcpot060';
+    } else if (oldname === 'bcpot008') {
+      return 'bcpot080';
+    } else if (oldname === 'bcpot009') {
+      return 'bcpot090';
+    } else {
+      return 'We are very sorry, this product is not currently in stock';
+    }
+  }
+  
 
 /* The following nested for loop only starts to run after the rest of the page info elements are 
 loaded. This is so that users can see the content of the page builds up rather than wait for the

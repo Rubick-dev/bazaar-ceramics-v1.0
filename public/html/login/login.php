@@ -32,8 +32,7 @@ if(is_logged_in()){
       $login_failure_msg = "Log in was unsuccessful.";
 
       $member = find_member_by_username($username);
-      if($member) {
-
+      if($member) {        
         if(password_verify($password, $member['HashedPassword'])) {
           // password matches
           log_in_member($member);

@@ -6,6 +6,8 @@
     $_SESSION['member_id'] = $member['CustomerID'];
     $_SESSION['last_login'] = time();
     $_SESSION['username'] = $member['UserID'];
+    $_SESSION['cart'] = 0;
+    $_SESSION['carttotal'] = 0;
     return true;
   }
 
@@ -14,6 +16,8 @@
     unset($_SESSION['member_id']);
     unset($_SESSION['last_login']);
     unset($_SESSION['username']);
+    unset($_SESSION['cart']);
+    unset($_SESSION['carttotal']);
     return true;
   }
 
