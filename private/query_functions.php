@@ -242,5 +242,26 @@ function update_orderline($curcartid, $prod_name, $order_quant){
     }
 }
 
+function get_new_quantity_value($prdID, $currentCartID) {
+  global $db;
+  
+  $sql = "SELECT OrderQuantity FROM orderline ";
+  $sql .= "WHERE ProductID = '" . db_escape($db, $prdID) . "' "; ;
+  $sql .= "AND OrderID = " . $currentCartID;
+  $sql .= " LIMIT 1";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $current_quantity = mysqli_fetch_assoc($result); 
+  mysqli_free_result($result);
+  return $current_quantity['OrderQuantity'];
+}
+
+
+
+
+
+
+
 
 ?>
+

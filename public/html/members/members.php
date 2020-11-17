@@ -9,20 +9,19 @@
 <?php 
 // Logic to get the total number of orders and set to a variable for display
 $carttotal = get_cart_total();
+$current_cart = $_SESSION['current_cart_ID'];
 
 ?>
 
-<!-- ################################################################## -->
-<!-- ### Members Page Content Area Top Section ### -->
 <div class="container3">
-			
 	<div class="banner">
 		<div class="bannerImgDiv"> 
 			<img class="bannerImg" src="../../images/members/banner.jpg" alt="Banner of Bazaar Ceramics">
 		</div>
 
 		<div class="shopCartDiv">
-			<a href="<?php echo url_for('/html/members/cart.php'); ?>" class="shopCartIconAnchor">
+		
+			<a href="<?php echo show_right_link($current_cart);?>" class="shopCartIconAnchor">
 				<img class="shopCartIconImg" src="../../images/members/shopCartIcon.jpg" alt="The Shopping Cart Icon">
 			</a>
 			<div class="cartItemTotal"><?php echo $carttotal ?></div>

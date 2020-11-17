@@ -11,11 +11,13 @@ if (is_post_request()){
 	$cid = $_SESSION['member_id'];
 	$order_quantity = $_POST['quantity'];
 
-
+	// Checks to see if the product is in stock.
 	if (!find_product_by_name($product_name)) {
-		echo $product_name;
-		// Return with error message #### need to make this logic still #######
-
+		// Return to members page with error message
+		echo "<script>alert('We are very sorry this product is no longer available');</script>";
+		echo "<script>window.close(); window.opener.location.reload();</script>";	
+		
+	// If the product is in stock runs the add to cart logic following.
 	} else {
 		if ($_SESSION['cart'] === 0) {
 			$_SESSION['cart'] = 1;
@@ -25,27 +27,20 @@ if (is_post_request()){
 			insert_new_orderline($currentCartID, $product_name, $order_quantity);
 			echo "<script>window.close(); window.opener.location.reload();</script>";			
 		} else {
+			// When a cart previously existed prior to user adding to cart
 			$ccid = $_SESSION['current_cart_ID'];
 			if(!has_product_been_ordered($ccid, $product_name)){
-				echo "THIS LINE EXECUTED 1";
 				insert_new_orderline($ccid, $product_name, $order_quantity);
 				echo "<script>window.close(); window.opener.location.reload();</script>";
 			} else {
-				echo "this line executed 2";
+				// When the current ordered line item is already in the cart
 				echo $product_name;
-				update_orderline($ccid, $product_name, $order_quantity);
+				$updated_quantity = $order_quantity + get_new_quantity_value($product_name, $ccid);
+				update_orderline($ccid, $product_name, $updated_quantity); 
 				echo "<script>window.close(); window.opener.location.reload();</script>";
 			}
-			
-			// if it is - update Quantity of Ordrline table corresponding ProductID
-			// else add a new OrderLine table row etnry wit hnew product ordered
-			// Calculate new Cart total and store in a session value
-
-
 		}
-
 	}
-	
 } 
 
 ?>

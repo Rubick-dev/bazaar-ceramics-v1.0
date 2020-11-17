@@ -3,8 +3,15 @@
 
 <?php
 $errors = [];
-$total = "30"
-// $cartItemSet = find_cart_items();
+$memID = $_SESSION['member_id']; //= $member['CustomerID'];
+$UserID = $_SESSION['username']; //= $member['UserID'];
+$ccID = $_SESSION['current_cart_ID']; //= '';
+
+if($_SESSION['cart'] === 0){
+  // echo "<script>alert('no items in cart - Please order items to see cart')</script>";
+  // redirect_to(url_for('/html/members/members.php'));
+};
+// $cartItemSet = find_cart_{items();
 
 // if(!cartItemSet) {
 //    Insert error message her for display on members page.
@@ -41,7 +48,9 @@ $total = "30"
             <th id="td6" class="tableHeading">Cancel Item</th>
           </tr>
         <!-- THIS IS WHERE THE TABLE IS FILLED OUT THROUGH ORDERS TABLE CONTENT -->
-
+           <?php 
+          //show_cart();
+          ?>  
           <tr>
             <td>12431223</td>
             <td>I nice Vase made out of materials that are so mamazing but what if this just went on forewver and scewe the page apart soo badly it hurts to type this much but i need to do it to test it</td>
@@ -64,7 +73,7 @@ $total = "30"
       
     </div> <!-- End of CartDiv above <table> items  -->
     <div id="totalPriceDiv">
-      <p>Total Order Price:   <?php echo "$" . $total ?></p> 
+      <p>Total Order Price:   <?php echo "$" . 5 ?></p> 
     </div>
      
     <div id="cartActions">

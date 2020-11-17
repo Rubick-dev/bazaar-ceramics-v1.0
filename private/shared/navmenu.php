@@ -72,9 +72,13 @@
   <?php 
     if(is_logged_in()){
       echo (display_welcome_message());
-    } else {
+      if (has_error_message()) {
+        echo (display_cart_errors());
+        $_SESSION['has_error'] = false;
+      } else {
       // Do nothing!
     }
+  }
   ?>
 
   </header> <!-- End of Header Section - NAV -->

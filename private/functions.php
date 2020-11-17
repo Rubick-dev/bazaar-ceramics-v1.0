@@ -83,6 +83,11 @@ function display_welcome_message() {
   }
 }
 
+function display_cart_errors() {
+  $msg2 = "You must have items in your cart to access the Shopping Cart :)";
+  return '<div id="loggedINMsg">' . h($msg2) . '</div>';
+  }
+
 function get_and_clear_session_message() {
   if(isset($_SESSION['message']) && $_SESSION['message'] != '') {
     $msg = $_SESSION['message'];
@@ -98,5 +103,23 @@ function display_session_message() {
   }
 }
 
-?>
+// ##################################################
+// ###            Displaying Cart Items           ###
+// ##################################################
 
+// These functions run the logic to display cart items on the cart & confirm orders pages
+
+function show_right_link($has_cart){
+  if ($has_cart === 0){        
+    $result = url_for('index.php');    
+    return $result;
+  } else {
+    echo "This logic has run";
+    $result = url_for('/html/members/cart.php');
+    return $result;
+  }
+}
+
+
+
+?>
