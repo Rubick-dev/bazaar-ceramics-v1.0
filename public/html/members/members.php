@@ -6,6 +6,11 @@
 <script src="../../scripts/formScripts.js"></script>
 <?php include(SHARED_PATH . '/navmenu.php'); ?>
 
+<?php 
+// Logic to get the total number of orders and set to a variable for display
+$carttotal = get_cart_total();
+
+?>
 
 <!-- ################################################################## -->
 <!-- ### Members Page Content Area Top Section ### -->
@@ -20,7 +25,7 @@
 			<a href="<?php echo url_for('/html/members/cart.php'); ?>" class="shopCartIconAnchor">
 				<img class="shopCartIconImg" src="../../images/members/shopCartIcon.jpg" alt="The Shopping Cart Icon">
 			</a>
-			<div class="cartItemTotal">0</div>
+			<div class="cartItemTotal"><?php echo $carttotal ?></div>
 		</div>
 
 	</div> <!-- ###    End of Banner Div    ### -->

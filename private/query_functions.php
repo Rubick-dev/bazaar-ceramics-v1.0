@@ -94,6 +94,8 @@ function insert_new_customer($customer) {
     exit;
   }
 }
+// ##### PRAC TASK F ADDITIONS ####
+
 
 // Checking to see if the product exists in the database.
 function find_product_by_name($product_name){
@@ -145,6 +147,99 @@ function insert_new_order($new_order) {
     db_disconnect($db);
     exit;
   }
+}
+
+// Gets the latest new order ID for use in a session
+function get_new_order_OrderID(){
+  global $db;
+
+  $result = mysqli_insert_id($db);
+  return $result;
+};
+
+// Getting cart details
+function get_cart_total(){
+  global $db;
+
+  if($_SESSION['cart'] === 0){
+    return 0;    
+  } else {
+  $cartID = $_SESSION['current_cart_ID'];
+  $total = calculate_total_ordered_items($cartID);
+  return $total;
+  }
+}
+
+//Inserts memeber data into members database.
+function insert_new_orderline($cartID, $prodname, $quantity) {
+  global $db;
+ 
+  $sql = "INSERT INTO orderline ";
+  $sql .= "(OrderID, ProductID, OrderQuantity) ";
+  $sql .= "VALUES (";
+  $sql .= "'" . db_escape($db, $cartID) . "',";
+  $sql .= "'" . db_escape($db, $prodname) . "',";
+  $sql .= "'" . db_escape($db, $quantity) . "'";
+  $sql .= ")";
+  $result = mysqli_query($db, $sql);
+  // Checking if INSERT statements returned a true/false and reporting
+  if($result) {
+    return true;
+  } else {
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
+}
+
+// Total items ordered calculation
+function calculate_total_ordered_items($con) {
+  global $db;
+  
+  $sql = "SELECT SUM(OrderQuantity) FROM orderline ";
+  $sql .= "WHERE OrderID = " . $con;
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $calcsumofcartitems = mysqli_fetch_assoc($result); 
+  mysqli_free_result($result);
+  return $calcsumofcartitems['SUM(OrderQuantity)'];
+}
+
+// Checks if product has been ordered alredy
+function has_product_been_ordered($curcartID, $product_name){
+  global $db;
+
+  $sql = "SELECT * FROM orderline ";
+  $sql .= "WHERE OrderID = " . $curcartID;
+  $sql .= " AND ProductID = " . "'" . db_escape($db, $product_name) . "' ";
+  $sql .= "LIMIT 1";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $orderline_set = mysqli_fetch_assoc($result); // find first
+  mysqli_free_result($result);
+  return $orderline_set; // returns null or Orderline_set array
+}
+
+// Updating quantity on an already ordered item in cart
+function update_orderline($curcartid, $prod_name, $order_quant){
+  global $db;
+
+    $sql = "UPDATE orderline SET ";
+    $sql .= "OrderQuantity = " . $order_quant;
+    $sql .= " WHERE OrderID = " . $curcartid;
+    $sql .= " AND ProductID = '" . db_escape($db, $prod_name) . "'";
+    
+    echo $sql;
+    $result = mysqli_query($db, $sql);
+    // For UPDATE statements, $result is true/false
+    if($result) {
+      return true;
+    } else {
+      // UPDATE failed
+      echo mysqli_error($db);
+      db_disconnect($db);
+      exit;
+    }
 }
 
 

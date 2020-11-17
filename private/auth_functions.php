@@ -7,7 +7,7 @@
     $_SESSION['last_login'] = time();
     $_SESSION['username'] = $member['UserID'];
     $_SESSION['cart'] = 0;
-    $_SESSION['carttotal'] = 0;
+    $_SESSION['current_cart_ID'] = '';
     return true;
   }
 
@@ -17,7 +17,7 @@
     unset($_SESSION['last_login']);
     unset($_SESSION['username']);
     unset($_SESSION['cart']);
-    unset($_SESSION['carttotal']);
+    unset($_SESSION['current_cart_ID']);
     return true;
   }
 

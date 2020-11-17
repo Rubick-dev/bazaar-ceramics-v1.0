@@ -9,46 +9,40 @@ if (is_post_request()){
 
 	$product_name = $_POST['prodId'];
 	$cid = $_SESSION['member_id'];
-
+	$order_quantity = $_POST['quantity'];
 
 
 	if (!find_product_by_name($product_name)) {
 		echo $product_name;
-		//product is out of stock message
 		// Return with error message #### need to make this logic still #######
+
 	} else {
 		if ($_SESSION['cart'] === 0) {
-			echo "THIS SHOWED HERE CAUSE SESSION WAS SET TO ";
-			print_r($_SESSION['cart']);
 			$_SESSION['cart'] = 1;
-
-			// Due to being the first object in the cart
-				//insert into orders table
-				insert_new_order($cid);
-				echo "NEW ORDER INSERTED INTO DB";
-					// NEXT OrderID
-					// CustomerID
-					// OrderDate
-				// insert item into OrderLine table
-					// Where OrderID
-					// ProductID
-					// Order Quantity 
-			
+			insert_new_order($cid);
+			$_SESSION['current_cart_ID'] = get_new_order_OrderID();
+			$currentCartID = $_SESSION['current_cart_ID'];
+			insert_new_orderline($currentCartID, $product_name, $order_quantity);
+			echo "<script>window.close(); window.opener.location.reload();</script>";			
 		} else {
-			echo "THIS SHOWED HERE CAUSE SESSION WAS NOT 0. IT IS SET TO ";
-			print_r($_SESSION['cart']);
+			$ccid = $_SESSION['current_cart_ID'];
+			if(!has_product_been_ordered($ccid, $product_name)){
+				echo "THIS LINE EXECUTED 1";
+				insert_new_orderline($ccid, $product_name, $order_quantity);
+				echo "<script>window.close(); window.opener.location.reload();</script>";
+			} else {
+				echo "this line executed 2";
+				echo $product_name;
+				update_orderline($ccid, $product_name, $order_quantity);
+				echo "<script>window.close(); window.opener.location.reload();</script>";
+			}
 			
-
-
-			// Logic to add item to cart
-			// Use OrderID to check if ProductID is already in the orderline Table
 			// if it is - update Quantity of Ordrline table corresponding ProductID
 			// else add a new OrderLine table row etnry wit hnew product ordered
 			// Calculate new Cart total and store in a session value
 
 
 		}
-
 
 	}
 	

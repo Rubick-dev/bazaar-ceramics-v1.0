@@ -89,9 +89,11 @@ function validate_customer($customer) {
     }
     return $errors;
   }
-
-
-  function add_item_to_cart(){
-
+ 
+// Checks if cart is currently active and if it is not returns 0
+  function check_if_cart($cart){
+    if($_SESSION['cart'] === 0) {
+      return 0;
+    }
   }
   ?>
