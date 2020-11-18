@@ -8,9 +8,12 @@
 
 <?php 
 // Logic to get the total number of orders and set to a variable for display
-$carttotal = get_cart_total();
 $current_cart = $_SESSION['current_cart_ID'];
-
+if ($current_cart === 0) {
+	$carttotal = 0;
+} else {
+$carttotal = get_cart_total();
+}
 ?>
 
 <div class="container3">
@@ -21,7 +24,7 @@ $current_cart = $_SESSION['current_cart_ID'];
 
 		<div class="shopCartDiv">
 		
-			<a href="<?php echo show_right_link($current_cart);?>" class="shopCartIconAnchor">
+			<a href="<?php echo url_for('/html/members/cart.php'); ?>" class="shopCartIconAnchor">
 				<img class="shopCartIconImg" src="../../images/members/shopCartIcon.jpg" alt="The Shopping Cart Icon">
 			</a>
 			<div class="cartItemTotal"><?php echo $carttotal ?></div>

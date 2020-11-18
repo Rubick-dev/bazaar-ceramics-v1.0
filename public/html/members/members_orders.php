@@ -76,7 +76,7 @@ if (is_post_request()){
 			<h3 id="itemsName2">Order Item - ######</h3>
 
 			<div class="formDetailsContent">
-				<form id="form" action="#" method="post" onsubmit="return submitForm();">
+				<form id="form" action="#" method="#" onsubmit="return submitForm();">
 					<ul class="wrapper">
 						<li class="form-row" id="descInsert"></li>
 						<li class="form-row">
@@ -92,7 +92,7 @@ if (is_post_request()){
 						<div class="buttonDiv">
 							<button class="butn" id="clrButn" onclick="clearValues(); return false">Clear</button>
 							<button class="butn" id="calcTotal" onclick="sum(); return false">Calculate Total</button>
-							<button class="butn" type="submit" value="submit" id="submitButton" name="submitButton">Add to Cart</button>
+							<button class="butn" type="submit" id="submitButton" name="submitButton">Add to Cart</button>
 						</div> <!-- End of button div -->
 					</ul>
 				</form>

@@ -8,7 +8,6 @@
     $_SESSION['username'] = $member['UserID'];
     $_SESSION['cart'] = 0;
     $_SESSION['current_cart_ID'] = 0;
-    $_SESSION['has_error'] = false;
     return true;
   }
 
@@ -19,7 +18,6 @@
     unset($_SESSION['username']);
     unset($_SESSION['cart']);
     unset($_SESSION['current_cart_ID']);
-    unset($_SESSION['has_error']);
     return true;
   }
 
@@ -40,15 +38,5 @@
       // Do nothing, let the rest of the page proceed
     }
   }
-
-  function has_error_message(){
-    if ($_SESSION['has_error']){
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-
 
 ?>

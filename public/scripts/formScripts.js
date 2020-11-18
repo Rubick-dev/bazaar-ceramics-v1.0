@@ -5,16 +5,14 @@ then runs a calculations and inserts the result in the total price column */
 function sum(){
   // Storing variables
   let val1 = document.getElementById('quantity').value;
+  console.log(val1);
   let val2 = parseInt(itemPrice);
    
   // Conducting the validity of the quantity value entered by the user and notifying if errors
   if(val1 < 1 || val1===null || isNaN(val1)){
     alert("Please ensure you enter a numeric value greater than zero into the quantity field");
     return 0;
-  }
-
-  // if Quantinity is an appropriate value, perform calc and inserts the result
-  else {
+  } else {
     let result = parseFloat(val1)*parseFloat(val2);
     document.getElementById('totalPrice').value=result;
   }
@@ -32,13 +30,14 @@ return;
 // Function to run checks and add an order to the orders table upon
 // pressing the submit button
 function submitForm(){
-
-  if(!sum()) {
-    document.getElementById('form').setAttribute('method', 'get');
+  let res=sum();
+  if(res === 0) {
     return false;
-  } else {
+  } else {   
+    document.getElementById('form').setAttribute('method', 'post');
     document.getElementById('form').setAttribute('action', 'members_orders.php');
-    return;     
+    alert('We have added the item to your cart');
+    return true;    
   }
 }
 

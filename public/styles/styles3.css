@@ -48,16 +48,22 @@ body {
 }
 
 .errors {
-  font-size: .6em;
+  width: 90%;
+  margin: auto;
+  margin-top: 5px;
+  font-size: .9em;
   color: var(--pastelGrey);
-  border: 1px solid red;
+  border: 3px solid red;
   background-color: var(--pastelBluey);
   padding-top: 5px;
   margin-top: 5px;
+  line-height: 1.3em;
 }
 
 .errors ul {
   list-style-type: none;
+  padding-left: 5%;
+  text-align: left;
 }
 
 .registerText {
@@ -211,4 +217,15 @@ td {
   text-align: center;
   background-color: var(--pastelDarkBlue);
   font-size: 1.5rem;
+}
+
+@media (max-width: 800px) {
+  .errors {
+    width: 90%;
+    margin: auto;
+    margin-top: 5px;
+    font-size: .6em;
+    border: 2px solid red;
+    line-height: 1.3em; 
+  }
 }
