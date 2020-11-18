@@ -8,6 +8,7 @@
     $_SESSION['username'] = $member['UserID'];
     $_SESSION['cart'] = 0;
     $_SESSION['current_cart_ID'] = 0;
+    $_SESSION['cart_total'] = 0;
     return true;
   }
 
@@ -18,8 +19,15 @@
     unset($_SESSION['username']);
     unset($_SESSION['cart']);
     unset($_SESSION['current_cart_ID']);
+    unset($_SESSION['cart_total']);
     return true;
   }
+
+  function reset_cart_session_details(){
+    $_SESSION['cart'] = 0;
+    $_SESSION['current_cart_ID'] = 0;
+    $_SESSION['cart_total'] = 0;
+  };
 
   // is_logged_in() contains all the logic for determining if a
   // request should be considered a "logged in" request or not.

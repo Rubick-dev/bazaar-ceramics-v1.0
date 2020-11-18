@@ -35,8 +35,7 @@ function submitForm(){
     return false;
   } else {   
     document.getElementById('form').setAttribute('method', 'post');
-    document.getElementById('form').setAttribute('action', 'members_orders.php');
-    alert('We have added the item to your cart');
+    document.getElementById('form').setAttribute('action', 'members_orders.php'); 
     return true;    
   }
 }

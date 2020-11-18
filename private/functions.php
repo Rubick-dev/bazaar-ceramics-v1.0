@@ -108,11 +108,10 @@ function reset_cart(){
   redirect_to(url_for('/html/members/members.php'));	
 }
 
-function display_cart_errors() {
+function display_empty_cart_msg() {
   $msg2 = "You have no items in your cart. Please order your items from the members orders page.";
   return '<div id="loggedINMsg">' . h($msg2) . '</div>';
   }
-
-
+  
 
 ?>

@@ -257,10 +257,53 @@ function get_new_quantity_value($prdID, $currentCartID) {
 }
 
 
+function show_cart($get_cart_orderID) {
+  global $db;
 
+  $sql = "SELECT ProductID, ProductDescription, OrderQuantity, ProductPrice, OrderQuantity * ProductPrice as ItemTotal ";
+  $sql .= "FROM orderline ";
+  $sql .= "INNER JOIN product USING (ProductID) ";
+  $sql .= "WHERE OrderID=" . db_escape($db, $get_cart_orderID);
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $cart = [];
+  $total_cart_value = 0;
 
+  while ($row =mysqli_fetch_row($result)){
+    $string = "<tr>";
+    $string .= "<td>" . $row[0] . "</td>";
+    $string .= "<td>" . $row[1] . "</td>";
+    $string .= "<td>" . $row[2] . "</td>";
+    $string .= "<td>" . $row[3] . "</td>";
+    $string .= "<td>" . $row[4] . "</td>";
+    $string .= "<td><img src=" . "../../images/members/cancel_order.png" . " class='cancelImg'></img></td>";
+    $string .= "</tr>";
+    array_push($cart, $string);
+    $total_cart_value = $total_cart_value + $row[4];
+  }; 
+  $_SESSION['cart_total'] = $total_cart_value;
+  mysqli_free_result($result);
+  return $cart;
+}
 
+// function calc_total($get_cart_orderID) {
+//   global $db;
 
+//   $sql = "SELECT OrderQuantity, ProductPrice, OrderQuantity * ProductPrice as ItemTotal ";
+//   $sql .= "FROM orderline ";
+//   $sql .= "INNER JOIN product USING (ProductID) ";
+//   $sql .= "WHERE OrderID=" . db_escape($db, $get_cart_orderID);
+//   $result = mysqli_query($db, $sql);
+//   confirm_result_set($result);
+//   $total=0;
+
+//   while ($row =mysqli_fetch_row($result)){
+//     $total=$total + $row[2];
+//   }; 
+
+//   mysqli_free_result($result);
+//   return $total;
+// }
 
 
 ?>

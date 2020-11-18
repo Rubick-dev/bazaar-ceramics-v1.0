@@ -6,6 +6,8 @@ $errors = [];
 $UsrID = $_SESSION['username'];
 $memID = $_SESSION['member_id'];
 $ccID = $_SESSION['current_cart_ID'];
+$getcartinfo = show_cart($ccID);
+$total = $_SESSION['cart_total'];
 
 if(is_post_request()){
   reset_cart();
@@ -30,7 +32,7 @@ if(is_post_request()){
 <?php
 if ($ccID === 0){
   echo "\n\n";
-  echo display_cart_errors();
+  echo display_empty_cart_msg();
   ?>
       <div id="cartActions">
         <a href="<?php echo url_for('/html/members/members.php'); ?>">
@@ -56,30 +58,15 @@ if ($ccID === 0){
           </tr>
         <!-- THIS IS WHERE THE TABLE IS FILLED OUT THROUGH ORDERS TABLE CONTENT -->
           <?php 
-          //show_cart();
-          ?>  
-          <tr>
-            <td>12431223</td>
-            <td>I nice Vase made out of materials that are so mamazing but what if this just went on forewver and scewe the page apart soo badly it hurts to type this much but i need to do it to test it</td>
-            <td>1</td>
-            <td>450</td>
-            <td>450</td>
-            <td><img src=<?php echo url_for('/images/members/cancel_order.png'); ?> class="cancelImg"></img></td>
-          </tr>
-        
-          <tr>
-            <td class="tableHeading">12315232342</td>
-            <td class="tableHeading">Another lorem ipsum dollor products that are amazing</td>
-            <td class="tableHeading">2</td>
-            <td class="tableHeading">300</td>
-            <td class="tableHeading">600</td>
-            <td><img src=<?php echo url_for('/images/members/cancel_order.png'); ?> class="cancelImg"></img></td>
-          </tr>
+          foreach ($getcartinfo as $value){
+            echo $value;
+          };
+          ?>     
         </table><!-- End of table of cart items  -->
       </div> <!-- End of CartDiv above <table> items  -->
     
       <div id="totalPriceDiv">
-        <p>Total Order Price:   <?php echo "$" . 5 ?></p> 
+        <p>Total Order Price:   <?php echo "$" . $total; ?></p> 
       </div>
 
       <div id="cartActions">

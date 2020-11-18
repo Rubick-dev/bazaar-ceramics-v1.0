@@ -14,10 +14,8 @@ if (is_post_request()){
 	// Checks to see if the product is in stock.
 	if (!find_product_by_name($product_name)) {
 		// Return to members page with error message
-		echo "<script>alert('We are very sorry this product is no longer available');</script>";
-		echo "<script>window.close(); window.opener.location.reload();</script>";	
-		
-	// If the product is in stock runs the add to cart logic following.
+		echo "<script>alert('We are very sorry this product is no longer available');window.close(); window.opener.location.reload();</script>";
+	// If the product is in stock runs the following add to cart logic.
 	} else {
 		if ($_SESSION['cart'] === 0) {
 			$_SESSION['cart'] = 1;
@@ -25,19 +23,19 @@ if (is_post_request()){
 			$_SESSION['current_cart_ID'] = get_new_order_OrderID();
 			$currentCartID = $_SESSION['current_cart_ID'];
 			insert_new_orderline($currentCartID, $product_name, $order_quantity);
-			echo "<script>window.close(); window.opener.location.reload();</script>";			
+			echo "<script> alert('We have added the item to your cart');window.close(); window.opener.location.reload();</script>";			
 		} else {
 			// When a cart previously existed prior to user adding to cart
 			$ccid = $_SESSION['current_cart_ID'];
 			if(!has_product_been_ordered($ccid, $product_name)){
 				insert_new_orderline($ccid, $product_name, $order_quantity);
-				echo "<script>window.close(); window.opener.location.reload();</script>";
+				echo "<script>alert('We have added the item to your cart');window.close(); window.opener.location.reload();</script>";
 			} else {
 				// When the current ordered line item is already in the cart
 				echo $product_name;
 				$updated_quantity = $order_quantity + get_new_quantity_value($product_name, $ccid);
 				update_orderline($ccid, $product_name, $updated_quantity); 
-				echo "<script>window.close(); window.opener.location.reload();</script>";
+				echo "<script>alert('We have updated your order quantity in your cart');window.close(); window.opener.location.reload();</script>";
 			}
 		}
 	}
