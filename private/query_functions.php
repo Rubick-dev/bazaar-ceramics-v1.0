@@ -94,9 +94,8 @@ function insert_new_customer($customer) {
     exit;
   }
 }
+
 // ##### PRAC TASK F ADDITIONS ####
-
-
 // Checking to see if the product exists in the database.
 function find_product_by_name($product_name){
   global $db;
@@ -108,7 +107,6 @@ function find_product_by_name($product_name){
   confirm_result_set($result);
   $product_id = mysqli_fetch_assoc($result); // find first
   mysqli_free_result($result);
-  // print_r($product_id);
   return $product_id; // returns null or productID
 }
 
@@ -123,7 +121,6 @@ function product_exists_in_orderline($prodID){
   confirm_result_set($result);
   $product_id = mysqli_fetch_assoc($result); // find first
   mysqli_free_result($result);
-  // print_r($product_id);
   return $product_id; // returns null or productID
 }
 
