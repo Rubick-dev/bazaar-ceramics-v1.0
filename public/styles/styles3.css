@@ -139,14 +139,23 @@ body {
   align-content: center;
 }
 
-#cartTableHeaderRow {
+#cartTableRowTR,
+#cartConfirmTableRowTR,
+#orderConfirmTableRowTR {
+  background-color: var(--pastelLightBlue);
+  color: var(--pastelGrey);
+}
+
+#cartTableHeaderRow,
+#cartConfirmTableHeaderRow {
   border: 1px solid var(--pastelPink);
   width: 90%;
   align-items: center;
   margin: auto;
 }
 
-#cartTableHeaderRow, 
+#cartTableHeaderRow,
+#cartConfirmTableHeaderRow,
 .tableHeading,
 td {
   border: 1px solid var(--pastelPink);
@@ -188,6 +197,12 @@ td {
   margin: 0px;
 }
 
+#cartConfirmTableRowTR #td6,
+#cartConfirmTableHeaderRow .row6  {
+  display: none;
+}
+
+
 .cancelImg {
   max-width: 20px;
   cursor: pointer;
@@ -218,6 +233,55 @@ td {
   background-color: var(--pastelDarkBlue);
   font-size: 1.5rem;
 }
+
+/* Order Confirm Styling */
+#customerInfo {
+  margin: auto;
+  text-align: center;
+  align-content: center;
+}
+
+#orderConfirmTableHeaderRow,
+#orderConfirmTableHeaderRow {
+  border: 1px solid var(--pastelPink);
+  width: 90%;
+  align-items: center;
+  margin: auto;
+}
+
+#ordDetHead {
+  margin-top: 40px;
+}
+
+#orderTableHeaderRow,
+#orderConfirmTableHeaderRow,
+.tableHeading,
+td {
+  border: 1px solid var(--pastelPink);
+  padding: 5px;
+  height: 70px;
+ }
+
+ #odtd1 {
+  width: 10%;
+}
+
+#odtd2 {
+ width: 20%;
+}
+
+#odtd3 {
+ width: 20%;
+}
+
+#odtd4 {
+ width: 30%;
+}
+
+#odtd5 {
+ width: 15%;
+}
+
 
 @media (max-width: 800px) {
   .errors {

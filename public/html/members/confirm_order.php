@@ -1,19 +1,19 @@
 <?php require_once('../../../private/initialise.php');?>
 <?php require_login(); ?>
-
-<?php
-$errors = [];
-// $cartItemSet = find_cart_items();
-
-// if(!cartItemSet) {
-//    Insert error message her for display on members page.
-//   make a link to click and exit back to members.php page
-// or force redirect_to(url_for('/html/members/members.php'));
-// } 
-?>
-
 <?php $page_title = 'BC - Shopping Cart Confirmation'; ?>
-<?php include(SHARED_PATH . '/header.php'); ?>
+<?php include(SHARED_PATH . '/header.php'); 
+$errors = [];
+$UsrID = $_SESSION['username'];
+$memID = $_SESSION['member_id'];
+$ccID = $_SESSION['current_cart_ID'];
+$getcartinfo = show_cart($ccID);
+$total = $_SESSION['cart_total'];
+
+if(is_post_request()){
+  reset_cart();
+}
+
+?>
 <link rel="stylesheet" media="all" href="<?php echo url_for('/styles/styles3.css'); ?>" />
 </head>
 
@@ -34,71 +34,61 @@ $errors = [];
       </div>
 
       <div id="cartDiv">
-        <table id="cartTableHeaderRow">
-          <tr id="cartTableRowTR">
+        <table id="cartConfirmTableHeaderRow">
+          <tr id="cartConfirmTableRowTR">
             <th id="td1" class="tableHeading">Product Code</th>
             <th id="td2" class="tableHeading">Description</th>
             <th id="td3" class="tableHeading">Quantity</th>
             <th id="td4" class="tableHeading">Unit Price</th>
             <th id="td5" class="tableHeading">Total Price</th>
+            <th id="td6" class="tableHeading">Hidden</th>
           </tr>
 
-        <!-- THIS IS WHERE THE TABLE IS FILLED OUT THROUGH ORDERS TABLE CONTENT -->
-
-          <tr>
-            <td>12431223</td>
-            <td>I nice Vase made out of materials that are so mamazing but what if this just went on forewver and scewe the page apart soo badly it hurts to type this much but i need to do it to test it</td>
-            <td>1</td>
-            <td>450</td>
-            <td>450</td>
-          </tr>
-        
-          <tr>
-            <td class="tableHeading">12315232342</td>
-            <td class="tableHeading">Another lorem ipsum dollor products that are amazing</td>
-            <td class="tableHeading">2</td>
-            <td class="tableHeading">300</td>
-            <td class="tableHeading">600</td>
-           </tr>
-
+        <!-- THIS IS WHERE THE TABLE IS FILLED OUT THROUGH A FUNCTION -->
+        <?php 
+          foreach ($getcartinfo as $value){
+            echo $value;
+          };
+        ?>  
         </table>
       </div> <!-- End of table of cart items  -->
-
     </div> <!-- End of CartDiv above <table> items  -->
     
     <div id="customerInfo">
-
-      <div>
-        <p>Order Details: </p>
-        <p>Customer name: <?php echo " INSERTNAME" ?></p>
-        <p>Customer Address: <?php echo " INSERTADDRESS" ?></p>
-        <p>Date of Order: <?php echo " INSERTDATE" ?></p>
-        <p>Total: <?php echo " INSERTTTOTALPRICE" ?></p>
-      </div>
-      
+      <h2 id="ordDetHead">Order Details: </h2>
+      <table id="orderConfirmTableHeaderRow">
+        <tr id="orderConfirmTableRowTR">
+          <th id="odtd1" class="tableHeading">Order Number</th>
+          <th id="odtd2" class="tableHeading">First Name</th>
+          <th id="odtd3" class="tableHeading">Last Name</th>
+          <th id="odtd4" class="tableHeading">Address</th>            
+          <th id="odtd5" class="tableHeading">Order Date</th>
+        </tr>
+        <?php 
+          show_order_details($memID, $ccID);
+        ?>  
+      </table>
     </div> <!-- End of customer Info div -->
 
-
-
     <div id="confirmButtonsDiv">
+      <form id="resetCartForm" action="confirm_order.php" method="post">  
+        <a href="<?php echo url_for('/html/members/members.php'); ?>">
+          <input class="btn" type="button" value="Keep Shopping" />
+        </a>
 
-      <a href="<?php echo url_for('/html/members/members.php'); ?>">
-        <input class="btn" type="button" value="Keep Shopping" />
-      </a>
-
-      <a href="<?php echo url_for('/html/members/cart.php'); ?>">
-        <input class="btn cancelButton" type="button" name="deleteCart" value="Return to Cart" />
-      </a> 
-            
-      <a href="<?php echo url_for('/html/members/confirm_order.php'); ?> ">
-        <input class="btn" id="orderBtn" type="button" name="orderItems" value="PAY NOW" />
-      </a>
-
+        <a href="<?php echo url_for('/html/members/cart.php'); ?>">
+          <input class="btn cancelButton" type="button" name="deleteCart" value="Return to Cart" />
+        </a> 
+              
+        <a href="<?php echo url_for('/html/members/confirm_order.php'); ?> ">
+          <input class="btn" id="orderBtn" type="submit" name="orderItems" value="PAY NOW" />
+        </a>
+      </form>
     </div> <!-- end of cartButtonsDiv -->
-   
+  
+  </div>
   </div> <!-- end of page container section -->
 
 <?php include(SHARED_PATH . '/login_footer.php'); ?>
 
-
-
+   

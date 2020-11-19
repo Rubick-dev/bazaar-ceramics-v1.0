@@ -25,7 +25,7 @@ $carttotal = get_cart_total();
 		<div class="shopCartDiv">
 		
 			<a href="<?php echo url_for('/html/members/cart.php'); ?>" class="shopCartIconAnchor">
-				<img class="shopCartIconImg" src="../../images/members/shopCartIcon.jpg" alt="The Shopping Cart Icon">
+				<img class="shopCartIconImg" src="../../images/members/ShopCartIcon.jpg" alt="The Shopping Cart Icon">
 			</a>
 			<div class="cartItemTotal"><?php echo $carttotal ?></div>
 		</div>

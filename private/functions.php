@@ -113,5 +113,4 @@ function display_empty_cart_msg() {
   return '<div id="loggedINMsg">' . h($msg2) . '</div>';
   }
   
-
 ?>

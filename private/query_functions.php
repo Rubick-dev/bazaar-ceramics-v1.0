@@ -229,7 +229,6 @@ function update_orderline($curcartid, $prod_name, $order_quant){
     $sql .= " WHERE OrderID = " . $curcartid;
     $sql .= " AND ProductID = '" . db_escape($db, $prod_name) . "'";
     
-    echo $sql;
     $result = mysqli_query($db, $sql);
     // For UPDATE statements, $result is true/false
     if($result) {
@@ -271,12 +270,15 @@ function show_cart($get_cart_orderID) {
 
   while ($row =mysqli_fetch_row($result)){
     $string = "<tr>";
-    $string .= "<td>" . $row[0] . "</td>";
-    $string .= "<td>" . $row[1] . "</td>";
-    $string .= "<td>" . $row[2] . "</td>";
-    $string .= "<td>" . $row[3] . "</td>";
-    $string .= "<td>" . $row[4] . "</td>";
-    $string .= "<td><img src=" . "../../images/members/cancel_order.png" . " class='cancelImg'></img></td>";
+    $string .= "<td class='row1'>" . $row[0] . "</td>";
+    $string .= "<td class='row2'>" . $row[1] . "</td>";
+    $string .= "<td class='row3'>" . $row[2] . "</td>";
+    $string .= "<td class='row4'>" . $row[3] . "</td>";
+    $string .= "<td class='row5'>" . $row[4] . "</td>";
+    $string .= "<form method='post' action='cancel_order.php?ID=" . $row[0] . "'>";
+    $string .= "<td class='row6'>";
+    $string .= "<button class='hiddenBTN' type='submit'><img class='cancelImg' src='../../images/members/cancel_order.png' /></button></td>";
+    $string .= "</form>";
     $string .= "</tr>";
     array_push($cart, $string);
     $total_cart_value = $total_cart_value + $row[4];
@@ -286,25 +288,82 @@ function show_cart($get_cart_orderID) {
   return $cart;
 }
 
-// function calc_total($get_cart_orderID) {
-//   global $db;
+function show_order_details($cusID, $ordID) {
+  global $db;
 
-//   $sql = "SELECT OrderQuantity, ProductPrice, OrderQuantity * ProductPrice as ItemTotal ";
-//   $sql .= "FROM orderline ";
-//   $sql .= "INNER JOIN product USING (ProductID) ";
-//   $sql .= "WHERE OrderID=" . db_escape($db, $get_cart_orderID);
-//   $result = mysqli_query($db, $sql);
-//   confirm_result_set($result);
-//   $total=0;
+  $sql = "SELECT CustomerGivenName, CustomerLastName, CustomerAddress, OrderDate";
+  $sql .= " FROM orders ";
+  $sql .= "INNER JOIN customer USING (CustomerID) ";
+  $sql .= "WHERE OrderID = " . $ordID . " AND CustomerID = " . $cusID;
+  $sql .= " LIMIT 1";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
 
-//   while ($row =mysqli_fetch_row($result)){
-//     $total=$total + $row[2];
-//   }; 
+  while ($rows =mysqli_fetch_row($result)){
+    echo "<tr>";
+    echo "<td class='row1'>" . $ordID . "</td>";
+    echo "<td class='row2'>" . $rows[0] . "</td>";
+    echo "<td class='row3'>" . $rows[1] . "</td>";
+    echo "<td class='row4'>" . $rows[2] . "</td>";
+    echo "<td class='row5'>" . $rows[3] . "</td>";
+    echo "</tr>";
+  }; 
+  
+  mysqli_free_result($result);
+  return;
+}
 
-//   mysqli_free_result($result);
-//   return $total;
-// }
+function remove_cart_item($prodID, $ccID){
+  global $db;
 
+  $sql = "DELETE FROM orderline ";
+  $sql .= "WHERE OrderID = " . $ccID . " AND ProductID = '" . $prodID . "'";
+  $sql .= " LIMIT 1";
+
+  $result = mysqli_query($db, $sql);
+  // For DELETE statements, $result is true/false
+  if($result) {
+    return true;
+  } else {
+    // UPDATE failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
+  return;
+}
+
+function check_for_cart_empty($check){
+  global $db;
+
+  $sql = "SELECT * FROM orderline ";
+  $sql .= "WHERE OrderID=" . $check;
+
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $hasentry = mysqli_fetch_assoc($result); // find first
+  mysqli_free_result($result);
+  
+  return $hasentry; // returns null or memberID
+}
+
+function delete_empty_order($ccID){
+  global $db;
+
+  $sql = "DELETE FROM orders ";
+  $sql .= "WHERE OrderID = " . $ccID;
+  $sql .= " LIMIT 1";
+
+  $result = mysqli_query($db, $sql);
+  if($result) {
+    return true;
+  } else {
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
+  return;
+}
 
 ?>
 

@@ -10,6 +10,7 @@ $getcartinfo = show_cart($ccID);
 $total = $_SESSION['cart_total'];
 
 if(is_post_request()){
+  delete_empty_order($ccID);
   reset_cart();
 }
 
@@ -71,17 +72,17 @@ if ($ccID === 0){
 
       <div id="cartActions">
         <form id="resetCartForm" action="cart.php" method="post">
-        <a href="<?php echo url_for('/html/members/members.php'); ?>">
-          <input class="btn" type="button" value="Return to Members" />
-        </a>
+          <a href="<?php echo url_for('/html/members/members.php'); ?>">
+            <input class="btn" type="button" value="Return to Members" />
+          </a>
 
-        <a href="<?php echo url_for('/html/members/clear_orders.php'); ?>">
-          <input class="btn cancelButton" type="submit" name="deleteCart" value="Remove All Items from Shopping Cart" />
-        </a> 
-              
-        <a href="<?php echo url_for('/html/members/confirm_order.php'); ?> ">
-          <input class="btn" id="orderBtn" type="button" name="orderItems" value="ORDER ITEMS" />
-        </a>
+          <a href="<?php echo url_for('/html/members/cancel_orders.php'); ?>">
+            <input class="btn cancelButton" type="submit" name="deleteCart" value="Remove All Items from Shopping Cart" />
+          </a> 
+                
+          <a href="<?php echo url_for('/html/members/confirm_order.php'); ?> ">
+            <input class="btn" id="orderBtn" type="button" name="orderItems" value="ORDER ITEMS" />
+          </a>
         </form>
       </div> <!-- end of cartSection -->
 
